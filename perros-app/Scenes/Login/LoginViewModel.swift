@@ -11,7 +11,7 @@ import Combine
 
 class LoginViewModel: ObservableObject {
     
-    private let repository = RealUserRepository(session: .shared, baseURL: Config.baseUrl)
+    private let repository: UserRepository
     private var disposables = Set<AnyCancellable>()
     @Published var isValid: Bool = false
     @Published var isError: Bool = false
@@ -26,6 +26,10 @@ class LoginViewModel: ObservableObject {
         }
     }
     
+    init(repository: UserRepository) {
+        self.repository = repository
+    }
+    
     private func validate() {
         isError = false
         isValid = !username.isEmpty && !password.isEmpty
@@ -37,7 +41,7 @@ class LoginViewModel: ObservableObject {
                 self.isError = true
             }
         }) { response in
-            print(response.token)
+            // Nothing here
         }.store(in: &disposables)
     }
 }

@@ -47,3 +47,9 @@ struct LoginView: View {
         }.frame(width: 350, height: nil, alignment: .center)
     }
 }
+
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView(viewModel: LoginViewModel(repository: MockUserRepository()))
+    }
+}

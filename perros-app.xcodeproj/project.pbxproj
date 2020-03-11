@@ -3,12 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		D94388F324187C280069596D /* CustomerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94388F224187C280069596D /* CustomerRepository.swift */; };
 		D94388F624187CCF0069596D /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94388F524187CCF0069596D /* Customer.swift */; };
+		D94388FA24188ED40069596D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94388F924188ED40069596D /* AppState.swift */; };
+		D94388FD2418994D0069596D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = D94388FC2418994D0069596D /* KeychainAccess */; };
+		D943890024189BCD0069596D /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94388FF24189BCD0069596D /* AccountView.swift */; };
+		D943890324189C760069596D /* MockUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D943890224189C760069596D /* MockUserRepository.swift */; };
+		D943890524189F500069596D /* TestWebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D943890424189F500069596D /* TestWebRepository.swift */; };
+		D94389072418A5F20069596D /* MockCustomerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94389062418A5F20069596D /* MockCustomerRepository.swift */; };
 		D96365F52414ED0000F1B209 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96365F42414ED0000F1B209 /* LoginView.swift */; };
 		D96365F72414F60700F1B209 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96365F62414F60700F1B209 /* LoginViewModel.swift */; };
 		D99380112414DA410067CB6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99380102414DA410067CB6A /* AppDelegate.swift */; };
@@ -21,7 +27,7 @@
 		D993802E2414DB860067CB6A /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D993802D2414DB860067CB6A /* UI.swift */; };
 		D99380312414DBCA0067CB6A /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99380302414DBCA0067CB6A /* SearchBarView.swift */; };
 		D99380332414DBFE0067CB6A /* CustomerSingleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99380322414DBFE0067CB6A /* CustomerSingleRow.swift */; };
-		D9F843BB2416682B000783E7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F843BA2416682B000783E7 /* HomeView.swift */; };
+		D9F843BB2416682B000783E7 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F843BA2416682B000783E7 /* RootView.swift */; };
 		D9F843BE241753D2000783E7 /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F843BD241753D2000783E7 /* APICall.swift */; };
 		D9F843C0241753F4000783E7 /* WebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F843BF241753F4000783E7 /* WebRepository.swift */; };
 		D9F843C224175425000783E7 /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F843C124175425000783E7 /* Publisher.swift */; };
@@ -33,6 +39,11 @@
 /* Begin PBXFileReference section */
 		D94388F224187C280069596D /* CustomerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerRepository.swift; sourceTree = "<group>"; };
 		D94388F524187CCF0069596D /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
+		D94388F924188ED40069596D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D94388FF24189BCD0069596D /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		D943890224189C760069596D /* MockUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserRepository.swift; sourceTree = "<group>"; };
+		D943890424189F500069596D /* TestWebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWebRepository.swift; sourceTree = "<group>"; };
+		D94389062418A5F20069596D /* MockCustomerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCustomerRepository.swift; sourceTree = "<group>"; };
 		D96365F42414ED0000F1B209 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D96365F62414F60700F1B209 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D993800D2414DA410067CB6A /* perros-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "perros-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,7 +58,7 @@
 		D993802D2414DB860067CB6A /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		D99380302414DBCA0067CB6A /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		D99380322414DBFE0067CB6A /* CustomerSingleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerSingleRow.swift; sourceTree = "<group>"; };
-		D9F843BA2416682B000783E7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D9F843BA2416682B000783E7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D9F843BD241753D2000783E7 /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
 		D9F843BF241753F4000783E7 /* WebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
 		D9F843C124175425000783E7 /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
@@ -61,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D94388FD2418994D0069596D /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +85,41 @@
 				D94388F524187CCF0069596D /* Customer.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D94388F724188EC50069596D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D94388F824188ECA0069596D /* Store */,
+				D94388F424187CC80069596D /* Model */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D94388F824188ECA0069596D /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				D94388F924188ED40069596D /* AppState.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		D94388FE24189BC20069596D /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				D94388FF24189BCD0069596D /* AccountView.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		D943890124189C630069596D /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				D943890224189C760069596D /* MockUserRepository.swift */,
+				D943890424189F500069596D /* TestWebRepository.swift */,
+				D94389062418A5F20069596D /* MockCustomerRepository.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		D96365F32414ECEB00F1B209 /* Login */ = {
@@ -104,13 +151,13 @@
 		D993800F2414DA410067CB6A /* perros-app */ = {
 			isa = PBXGroup;
 			children = (
-				D94388F424187CC80069596D /* Model */,
-				D9F843C72417667B000783E7 /* Utilities */,
-				D9F843BC241753C8000783E7 /* Network */,
-				D993802C2414DB750067CB6A /* Extensions */,
-				D99380262414DA8D0067CB6A /* Supporting */,
+				D943890124189C630069596D /* Mocks */,
 				D99380252414DA7E0067CB6A /* App */,
+				D94388F724188EC50069596D /* Data */,
+				D9F843BC241753C8000783E7 /* Network */,
 				D99380242414DA730067CB6A /* Scenes */,
+				D99380262414DA8D0067CB6A /* Supporting */,
+				D9F843C72417667B000783E7 /* Utilities */,
 				D99380182414DA430067CB6A /* Preview Content */,
 			);
 			path = "perros-app";
@@ -127,7 +174,8 @@
 		D99380242414DA730067CB6A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D9F843B924166808000783E7 /* Home */,
+				D94388FE24189BC20069596D /* Account */,
+				D9F843B924166808000783E7 /* Root */,
 				D96365F32414ECEB00F1B209 /* Login */,
 				D993802F2414DBBF0067CB6A /* Common */,
 				D99380272414DAC30067CB6A /* Customers */,
@@ -183,12 +231,12 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		D9F843B924166808000783E7 /* Home */ = {
+		D9F843B924166808000783E7 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				D9F843BA2416682B000783E7 /* HomeView.swift */,
+				D9F843BA2416682B000783E7 /* RootView.swift */,
 			);
-			path = Home;
+			path = Root;
 			sourceTree = "<group>";
 		};
 		D9F843BC241753C8000783E7 /* Network */ = {
@@ -203,6 +251,7 @@
 		D9F843C72417667B000783E7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D993802C2414DB750067CB6A /* Extensions */,
 				D9F843C82417668F000783E7 /* Config.swift */,
 			);
 			path = Utilities;
@@ -224,6 +273,9 @@
 			dependencies = (
 			);
 			name = "perros-app";
+			packageProductDependencies = (
+				D94388FC2418994D0069596D /* KeychainAccess */,
+			);
 			productName = "perros-app";
 			productReference = D993800D2414DA410067CB6A /* perros-app.app */;
 			productType = "com.apple.product-type.application";
@@ -252,6 +304,9 @@
 				Base,
 			);
 			mainGroup = D99380042414DA410067CB6A;
+			packageReferences = (
+				D94388FB2418994D0069596D /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = D993800E2414DA410067CB6A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -280,18 +335,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				D94388F324187C280069596D /* CustomerRepository.swift in Sources */,
-				D9F843BB2416682B000783E7 /* HomeView.swift in Sources */,
+				D9F843BB2416682B000783E7 /* RootView.swift in Sources */,
+				D943890524189F500069596D /* TestWebRepository.swift in Sources */,
 				D99380112414DA410067CB6A /* AppDelegate.swift in Sources */,
 				D9F843C92417668F000783E7 /* Config.swift in Sources */,
+				D943890024189BCD0069596D /* AccountView.swift in Sources */,
 				D9F843BE241753D2000783E7 /* APICall.swift in Sources */,
 				D99380132414DA410067CB6A /* SceneDelegate.swift in Sources */,
 				D99380312414DBCA0067CB6A /* SearchBarView.swift in Sources */,
+				D94388FA24188ED40069596D /* AppState.swift in Sources */,
 				D99380152414DA410067CB6A /* CustomersView.swift in Sources */,
 				D993802B2414DB570067CB6A /* CustomersViewModel.swift in Sources */,
 				D99380332414DBFE0067CB6A /* CustomerSingleRow.swift in Sources */,
 				D9F843C224175425000783E7 /* Publisher.swift in Sources */,
+				D94389072418A5F20069596D /* MockCustomerRepository.swift in Sources */,
 				D96365F72414F60700F1B209 /* LoginViewModel.swift in Sources */,
 				D96365F52414ED0000F1B209 /* LoginView.swift in Sources */,
+				D943890324189C760069596D /* MockUserRepository.swift in Sources */,
 				D94388F624187CCF0069596D /* Customer.swift in Sources */,
 				D9F843C0241753F4000783E7 /* WebRepository.swift in Sources */,
 				D993802E2414DB860067CB6A /* UI.swift in Sources */,
@@ -490,6 +550,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D94388FB2418994D0069596D /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D94388FC2418994D0069596D /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D94388FB2418994D0069596D /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D99380052414DA410067CB6A /* Project object */;
 }

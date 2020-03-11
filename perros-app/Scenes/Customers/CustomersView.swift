@@ -14,7 +14,7 @@ import Combine
 struct CustomersView: View {
     @ObservedObject var viewModel: CustomersViewModel
 
-    init(viewModel: CustomersViewModel = CustomersViewModel()) {
+    init(viewModel: CustomersViewModel) {
         self.viewModel = viewModel
     }
     
@@ -39,5 +39,13 @@ struct CustomersView: View {
                 .navigationBarTitle("Customers", displayMode: .inline)
             }
         }
+    }
+}
+
+struct CustomersView_Previews: PreviewProvider {
+    static let viewModel = CustomersViewModel(repository: MockCustomerRepository())
+    
+    static var previews: some View {
+        CustomersView(viewModel: viewModel)
     }
 }

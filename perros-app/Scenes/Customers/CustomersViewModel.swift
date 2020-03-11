@@ -18,9 +18,9 @@ class CustomersViewModel: ObservableObject {
     private let repository: CustomerRepository
     private var disposables = Set<AnyCancellable>()
     
-    init(
-        repository: CustomerRepository = RealCustomerRepository(session: .shared, baseURL: Config.baseUrl),
-        scheduler: DispatchQueue = DispatchQueue(label: "CustomersViewModel")) {
+    private let scheduler = DispatchQueue(label: "CustomersViewModel")
+    
+    init(repository: CustomerRepository) {
         
         self.repository = repository
         getAll()

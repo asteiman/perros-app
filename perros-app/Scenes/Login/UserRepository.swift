@@ -10,7 +10,8 @@ import Combine
 import Foundation
 
 protocol UserRepository: WebRepository {
-    func login(username: String, password: String) -> AnyPublisher<LoginResponse, Error>
+    func login(username: String, password: String) -> AnyPublisher<Void, Error>
+    func logout()
 }
 
 struct RealUserRepository: UserRepository {
@@ -18,14 +19,24 @@ struct RealUserRepository: UserRepository {
     let session: URLSession
     let baseURL: String
     let bgQueue = DispatchQueue(label: "bg_parse_queue")
+    let appState: AppState
     
-    init(session: URLSession, baseURL: String) {
+    init(session: URLSession, baseURL: String, appState: AppState) {
         self.session = session
         self.baseURL = baseURL
+        self.appState = appState
     }
     
-    func login(username: String, password: String) -> AnyPublisher<LoginResponse, Error> {
-        return call(endpoint: API.login(username: username, password: password))
+    func login(username: String, password: String) -> AnyPublisher<Void, Error> {
+        let response: AnyPublisher<LoginResponse, Error> = call(endpoint: API.login(username: username, password: password))
+        
+        return response.map { response in
+            self.appState.userToken = response.token
+        }.eraseToAnyPublisher()
+    }
+    
+    func logout() {
+        appState.userToken = nil
     }
 }
 
