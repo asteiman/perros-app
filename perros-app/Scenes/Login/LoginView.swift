@@ -23,7 +23,7 @@ struct LoginView: View {
             Text("Admin PER-ROS").font(.title).padding()
             Group {
                 TextField("Username", text: $viewModel.username)
-                TextField("Pasword", text: $viewModel.password)
+                SecureField("Pasword", text: $viewModel.password)
             }
             .padding()
             .frame(width: nil, height: 60)

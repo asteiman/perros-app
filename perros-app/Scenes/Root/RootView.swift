@@ -23,7 +23,7 @@ struct RootView: View {
     
     var tabView: some View {
         TabView {
-            CustomersView(viewModel: CustomersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl)))
+            CustomersView(viewModel: CustomersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, appState: appState)))
             .tabItem {
                 Text("Customers")
             }

@@ -18,14 +18,16 @@ struct RealCustomerRepository: CustomerRepository {
     let session: URLSession
     let baseURL: String
     let bgQueue = DispatchQueue(label: "bg_parse_queue")
+    let appState: AppState
     
-    init(session: URLSession, baseURL: String) {
+    init(session: URLSession, baseURL: String, appState: AppState) {
         self.session = session
         self.baseURL = baseURL
+        self.appState = appState
     }
     
     func getAll() -> AnyPublisher<[Customer], Error> {
-        return call(endpoint: API.all)
+        return call(endpoint: API.all(token: appState.userToken))
     }
 }
 
@@ -33,7 +35,7 @@ struct RealCustomerRepository: CustomerRepository {
 
 extension RealCustomerRepository {
     enum API {
-        case all
+        case all(token: String?)
     }
 }
 
@@ -53,7 +55,14 @@ extension RealCustomerRepository.API: APICall {
     }
     
     var headers: [String: String]? {
-        let headers = ["Accept": "application/json"]
+        var headers = ["Accept": "application/json"]
+        
+        switch self {
+        case .all(let token):
+            if let token = token {
+                headers["Authorization"] = "Bearer \(token)"
+            }
+        }
         
         return headers
     }
