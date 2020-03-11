@@ -21,15 +21,16 @@ struct LoginView: View {
     var body: some View {
         VStack {
             Text("Admin PER-ROS").font(.title).padding()
-            TextField("Username", text: $viewModel.username)
-                .padding()
-                .background(lightGreyColor)
-                .cornerRadius(5.0)
-            SecureField("Password", text: $viewModel.password)
-                .padding()
-                .background(lightGreyColor)
-                .cornerRadius(5.0)
-                .padding(.bottom, 10)
+            Group {
+                TextField("Username", text: $viewModel.username)
+                TextField("Pasword", text: $viewModel.password)
+            }
+            .padding()
+            .frame(width: nil, height: 60)
+            .background(lightGreyColor)
+            .cornerRadius(5)
+            
+
             if viewModel.isError {
                 Text("Invalid credentials, please try again").padding(.bottom, 10).foregroundColor(.red)
             }
@@ -42,6 +43,7 @@ struct LoginView: View {
                 .background(viewModel.isValid ? Color.green : lightGreyColor)
                 .foregroundColor(.white)
                 .cornerRadius(4)
+                .padding(.top, 10)
             }
             .disabled(!viewModel.isValid)
         }.frame(width: 350, height: nil, alignment: .center)
