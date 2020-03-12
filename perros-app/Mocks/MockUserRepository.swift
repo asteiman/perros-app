@@ -10,9 +10,9 @@ import Foundation
 import Combine
 
 final class MockUserRepository: TestWebRepository, UserRepository {
-    func login(username: String, password: String) -> AnyPublisher<Void, Error> {
+    func login(username: String, password: String) -> AnyPublisher<Void, GenericError> {
         Just(())
-        .setFailureType(to: Error.self)
+        .setFailureType(to: GenericError.self)
         .eraseToAnyPublisher()
     }
     

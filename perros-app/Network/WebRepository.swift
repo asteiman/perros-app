@@ -13,26 +13,40 @@ protocol WebRepository {
     var session: URLSession { get }
     var baseURL: String { get }
     var bgQueue: DispatchQueue { get }
+    var tokenStore: TokenStore { get }
 }
 
 extension WebRepository {
-    func call<Value: Decodable>(endpoint: APICall, httpCodes: HTTPCodes = .success) -> AnyPublisher<Value, Error> {
-        do {
-            let request = try endpoint.urlRequest(baseURL: baseURL)
-            return session
-                .dataTaskPublisher(for: request)
-                .requestJSON(httpCodes: httpCodes)
-                .ensureTimeSpan(0.5) // Hold the response if it arrives too quickly
-        } catch let error {
-            return Fail<Value, Error>(error: error).eraseToAnyPublisher()
+    func call<T: Decodable>(endpoint: APICall, httpCodes: HTTPCodes = .success) -> AnyPublisher<T, APIError> {
+        guard var request = try? endpoint.urlRequest(baseURL: baseURL) else {
+            return Fail(error: APIError.invalidURL).eraseToAnyPublisher()
         }
+        
+        if endpoint.needsToken {
+            guard let token = tokenStore.token else {
+                tokenStore.revoke()
+                return Fail(error: APIError.tokenNeeded).eraseToAnyPublisher()
+            }
+            request.allHTTPHeaderFields?["Authorization"] = "Bearer \(token)"
+        }
+        
+        return session.dataTaskPublisher(for: request)
+            .requestJSON(httpCodes: httpCodes)
+            .mapError{ error in
+                if case APIError.httpCode(401) = error {
+                    self.tokenStore.revoke()
+                }
+                return error
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
 }
 
 // MARK: - Helpers
 
 private extension Publisher where Output == URLSession.DataTaskPublisher.Output {
-    func requestJSON<Value>(httpCodes: HTTPCodes) -> AnyPublisher<Value, Error> where Value: Decodable {
+    func requestJSON<T: Decodable>(httpCodes: HTTPCodes) -> AnyPublisher<T, APIError> {
         return tryMap {
                 assert(!Thread.isMainThread)
                 guard let code = ($0.1 as? HTTPURLResponse)?.statusCode else {
@@ -43,9 +57,13 @@ private extension Publisher where Output == URLSession.DataTaskPublisher.Output 
                 }
                 return $0.0
             }
-            .extractUnderlyingError()
-            .decode(type: Value.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
+            .decode(type: T.self, decoder: JSONDecoder())
+            .mapError{ error -> APIError in
+                guard let apiError = error as? APIError else {
+                    return .unexpectedResponse
+                }
+                return apiError
+            }
             .eraseToAnyPublisher()
     }
 }

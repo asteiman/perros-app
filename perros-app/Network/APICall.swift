@@ -13,12 +13,18 @@ protocol APICall {
     var method: String { get }
     var headers: [String: String]? { get }
     func body() throws -> Data?
+    var needsToken: Bool { get }
 }
 
 enum APIError: Swift.Error {
     case invalidURL
     case httpCode(HTTPCode)
     case unexpectedResponse
+    case tokenNeeded
+}
+
+enum GenericError: Error {
+    case network
 }
 
 extension APIError: LocalizedError {
@@ -27,6 +33,7 @@ extension APIError: LocalizedError {
         case .invalidURL: return "Invalid URL"
         case let .httpCode(code): return "Unexpected HTTP code: \(code)"
         case .unexpectedResponse: return "Unexpected response from the server"
+        case .tokenNeeded: return "Access token is required"
         }
     }
 }

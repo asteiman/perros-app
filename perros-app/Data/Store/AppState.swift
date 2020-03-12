@@ -9,23 +9,20 @@
 import Foundation
 import Combine
 import KeychainAccess
+import SwiftUI
 
 final class AppState: ObservableObject {
-    private let keychain = Keychain(service: "com.perros")
-    var userToken: String? {
-        didSet {
-            keychain["token"] = userToken
-            isLoggedIn = userToken != nil
-        }
-    }
+    @ObservedObject var tokenStore = TokenStore()
     
     @Published var isLoggedIn: Bool = false
     
-    init() {
-        readToken()
-    }
+    private var disposables = Set<AnyCancellable>()
     
-    private func readToken() {
-        userToken = keychain["token"]
+    init() {
+        tokenStore.tokenSubject.receive(on: DispatchQueue.main).sink {
+            self.isLoggedIn = self.tokenStore.token != nil
+        }.store(in: &disposables)
+        
+        tokenStore.load()
     }
 }

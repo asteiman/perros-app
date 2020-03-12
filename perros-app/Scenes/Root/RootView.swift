@@ -23,11 +23,11 @@ struct RootView: View {
     
     var tabView: some View {
         TabView {
-            CustomersView(viewModel: CustomersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, appState: appState)))
+            CustomersView(viewModel: CustomersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: appState.tokenStore)))
             .tabItem {
                 Text("Customers")
             }
-            AccountView(repository: RealUserRepository(session: .shared, baseURL: Config.baseUrl, appState: appState))
+            AccountView(repository: RealUserRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: appState.tokenStore))
             .tabItem {
                 Text("Account")
             }
@@ -35,7 +35,7 @@ struct RootView: View {
     }
     
     var loginView: some View {
-        LoginView(viewModel: LoginViewModel(repository: RealUserRepository(session: .shared, baseURL: Config.baseUrl, appState: appState)))
+        LoginView(viewModel: LoginViewModel(repository: RealUserRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: appState.tokenStore)))
     }
 }
 

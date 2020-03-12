@@ -8,9 +8,10 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 protocol CustomerRepository: WebRepository {
-    func getAll() -> AnyPublisher<[Customer], Error>
+    func getAll() -> AnyPublisher<[Customer], GenericError>
 }
 
 struct RealCustomerRepository: CustomerRepository {
@@ -18,16 +19,19 @@ struct RealCustomerRepository: CustomerRepository {
     let session: URLSession
     let baseURL: String
     let bgQueue = DispatchQueue(label: "bg_parse_queue")
-    let appState: AppState
-    
-    init(session: URLSession, baseURL: String, appState: AppState) {
+    let tokenStore: TokenStore
+        
+    init(session: URLSession, baseURL: String, tokenStore: TokenStore) {
         self.session = session
         self.baseURL = baseURL
-        self.appState = appState
+        self.tokenStore = tokenStore
     }
     
-    func getAll() -> AnyPublisher<[Customer], Error> {
-        return call(endpoint: API.all(token: appState.userToken))
+    func getAll() -> AnyPublisher<[Customer], GenericError> {
+        return call(endpoint: API.all)
+            .mapError { error in
+            return GenericError.network
+        }.eraseToAnyPublisher()
     }
 }
 
@@ -35,11 +39,15 @@ struct RealCustomerRepository: CustomerRepository {
 
 extension RealCustomerRepository {
     enum API {
-        case all(token: String?)
+        case all
     }
 }
 
 extension RealCustomerRepository.API: APICall {
+    var needsToken: Bool {
+        true
+    }
+    
     var path: String {
         switch self {
         case .all:
@@ -55,14 +63,7 @@ extension RealCustomerRepository.API: APICall {
     }
     
     var headers: [String: String]? {
-        var headers = ["Accept": "application/json"]
-        
-        switch self {
-        case .all(let token):
-            if let token = token {
-                headers["Authorization"] = "Bearer \(token)"
-            }
-        }
+        let headers = ["Accept": "application/json"]
         
         return headers
     }

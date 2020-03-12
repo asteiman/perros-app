@@ -9,6 +9,7 @@
 import Foundation
 
 class TestWebRepository: WebRepository {
+    var tokenStore = TokenStore()
     let session: URLSession = .shared
     let baseURL = "https://test.com"
     let bgQueue = DispatchQueue(label: "test")

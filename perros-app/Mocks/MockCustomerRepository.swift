@@ -10,9 +10,9 @@ import Foundation
 import Combine
 
 final class MockCustomerRepository: TestWebRepository, CustomerRepository {
-    func getAll() -> AnyPublisher<[Customer], Error> {
+    func getAll() -> AnyPublisher<[Customer], GenericError> {
         Just([Customer(id: 1, name: "John Doe", address: "1 Infinite Loop")])
-        .setFailureType(to: Error.self)
+        .setFailureType(to: GenericError.self)
         .eraseToAnyPublisher()
     }
 }

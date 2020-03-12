@@ -10,33 +10,36 @@ import Combine
 import Foundation
 
 protocol UserRepository: WebRepository {
-    func login(username: String, password: String) -> AnyPublisher<Void, Error>
+    func login(username: String, password: String) -> AnyPublisher<Void, GenericError>
     func logout()
 }
 
 struct RealUserRepository: UserRepository {
-    
     let session: URLSession
     let baseURL: String
     let bgQueue = DispatchQueue(label: "bg_parse_queue")
-    let appState: AppState
+    let tokenStore: TokenStore
     
-    init(session: URLSession, baseURL: String, appState: AppState) {
+    init(session: URLSession, baseURL: String, tokenStore: TokenStore) {
         self.session = session
         self.baseURL = baseURL
-        self.appState = appState
+        self.tokenStore = tokenStore
     }
     
-    func login(username: String, password: String) -> AnyPublisher<Void, Error> {
-        let response: AnyPublisher<LoginResponse, Error> = call(endpoint: API.login(username: username, password: password))
+    func login(username: String, password: String) -> AnyPublisher<Void, GenericError> {
+        let response: AnyPublisher<LoginResponse, APIError> = call(endpoint: API.login(username: username, password: password))
         
         return response.map { response in
-            self.appState.userToken = response.token
-        }.eraseToAnyPublisher()
+            self.tokenStore.setToken(token: response.token)
+        }
+        .mapError { error in
+            return GenericError.network
+        }
+        .eraseToAnyPublisher()
     }
     
     func logout() {
-        appState.userToken = nil
+        tokenStore.revoke()
     }
 }
 
@@ -49,6 +52,10 @@ extension RealUserRepository {
 }
 
 extension RealUserRepository.API: APICall {
+    var needsToken: Bool {
+        false
+    }
+    
     var path: String {
         switch self {
         case .login(username: _, password: _):
