@@ -13,3 +13,9 @@ struct Customer: Codable, Identifiable {
     var name: String
     var address: String
 }
+
+extension Customer {
+    var avatar: String {
+        return "https://picsum.photos/50"
+    }
+}

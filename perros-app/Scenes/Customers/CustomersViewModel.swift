@@ -28,7 +28,7 @@ class CustomersViewModel: ObservableObject {
         $searchText
             .dropFirst(1)
             .debounce(for: .seconds(0.5), scheduler: scheduler)
-            .sink(receiveValue: getCustomers(forName:))
+            .sink(receiveValue: filterCustomers(withName:))
             .store(in: &disposables)
     }
     
@@ -54,7 +54,7 @@ class CustomersViewModel: ObservableObject {
         .store(in: &disposables)
     }
     
-    func getCustomers(forName name: String) {
+    func filterCustomers(withName name: String) {
         DispatchQueue.main.async {
             guard name.isEmpty == false else {
                 self.dataSource = self.all

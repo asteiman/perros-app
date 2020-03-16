@@ -13,7 +13,7 @@ struct CustomerSingleRow: View {
     
     var body: some View {
         HStack {
-            Image("default-avatar").resizable().frame(width: 50, height: 50).cornerRadius(50)
+            AsyncImage(url: URL(string: model.avatar)!, placeholder: Image("default-avatar").resizable()).frame(width: 50, height: 50).aspectRatio(contentMode: .fit).cornerRadius(50)
             VStack(alignment: .leading) {
                 Text(model.name)
                 Text(model.address).font(.system(.caption))
