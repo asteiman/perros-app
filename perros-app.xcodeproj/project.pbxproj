@@ -30,6 +30,13 @@
 		D99380312414DBCA0067CB6A /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99380302414DBCA0067CB6A /* SearchBarView.swift */; };
 		D99380332414DBFE0067CB6A /* CustomerSingleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99380322414DBFE0067CB6A /* CustomerSingleRow.swift */; };
 		D9A8F670241A273D009BBAA6 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A8F66F241A273D009BBAA6 /* TokenStore.swift */; };
+		D9B9108C2420D7C700DB8181 /* CustomerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B9108B2420D7C700DB8181 /* CustomerDetailView.swift */; };
+		D9B9108F2420E0BD00DB8181 /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B9108E2420E0BD00DB8181 /* OrdersView.swift */; };
+		D9B910922420E10600DB8181 /* BillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B910912420E10600DB8181 /* BillingView.swift */; };
+		D9B910942420E78500DB8181 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B910932420E78500DB8181 /* ImageCache.swift */; };
+		D9B910962420EB7F00DB8181 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B910952420EB7F00DB8181 /* OrdersViewModel.swift */; };
+		D9B910982420EBF900DB8181 /* OrderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B910972420EBF900DB8181 /* OrderRepository.swift */; };
+		D9B9109A2420EC5300DB8181 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B910992420EC5300DB8181 /* Order.swift */; };
 		D9F843BB2416682B000783E7 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F843BA2416682B000783E7 /* RootView.swift */; };
 		D9F843BE241753D2000783E7 /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F843BD241753D2000783E7 /* APICall.swift */; };
 		D9F843C0241753F4000783E7 /* WebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F843BF241753F4000783E7 /* WebRepository.swift */; };
@@ -64,6 +71,13 @@
 		D99380302414DBCA0067CB6A /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		D99380322414DBFE0067CB6A /* CustomerSingleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerSingleRow.swift; sourceTree = "<group>"; };
 		D9A8F66F241A273D009BBAA6 /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
+		D9B9108B2420D7C700DB8181 /* CustomerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDetailView.swift; sourceTree = "<group>"; };
+		D9B9108E2420E0BD00DB8181 /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
+		D9B910912420E10600DB8181 /* BillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingView.swift; sourceTree = "<group>"; };
+		D9B910932420E78500DB8181 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		D9B910952420EB7F00DB8181 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
+		D9B910972420EBF900DB8181 /* OrderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRepository.swift; sourceTree = "<group>"; };
+		D9B910992420EC5300DB8181 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		D9F843BA2416682B000783E7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D9F843BD241753D2000783E7 /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
 		D9F843BF241753F4000783E7 /* WebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
@@ -89,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				D94388F524187CCF0069596D /* Customer.swift */,
+				D9B910992420EC5300DB8181 /* Order.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,6 +196,9 @@
 		D99380242414DA730067CB6A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D9B910902420E0FC00DB8181 /* Billing */,
+				D9B9108D2420E0B100DB8181 /* Orders */,
+				D9B9108A2420D7B500DB8181 /* CustomerDetail */,
 				D94388FE24189BC20069596D /* Account */,
 				D9F843B924166808000783E7 /* Root */,
 				D96365F32414ECEB00F1B209 /* Login */,
@@ -239,6 +257,32 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		D9B9108A2420D7B500DB8181 /* CustomerDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D9B9108B2420D7C700DB8181 /* CustomerDetailView.swift */,
+			);
+			path = CustomerDetail;
+			sourceTree = "<group>";
+		};
+		D9B9108D2420E0B100DB8181 /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				D9B9108E2420E0BD00DB8181 /* OrdersView.swift */,
+				D9B910952420EB7F00DB8181 /* OrdersViewModel.swift */,
+				D9B910972420EBF900DB8181 /* OrderRepository.swift */,
+			);
+			path = Orders;
+			sourceTree = "<group>";
+		};
+		D9B910902420E0FC00DB8181 /* Billing */ = {
+			isa = PBXGroup;
+			children = (
+				D9B910912420E10600DB8181 /* BillingView.swift */,
+			);
+			path = Billing;
+			sourceTree = "<group>";
+		};
 		D9F843B924166808000783E7 /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +306,7 @@
 				D993802C2414DB750067CB6A /* Extensions */,
 				D9F843C82417668F000783E7 /* Config.swift */,
 				D9590709241F6377005FBCF1 /* ImageLoader.swift */,
+				D9B910932420E78500DB8181 /* ImageCache.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -343,26 +388,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9B910942420E78500DB8181 /* ImageCache.swift in Sources */,
 				D94388F324187C280069596D /* CustomerRepository.swift in Sources */,
 				D9F843BB2416682B000783E7 /* RootView.swift in Sources */,
 				D943890524189F500069596D /* TestWebRepository.swift in Sources */,
 				D99380112414DA410067CB6A /* AppDelegate.swift in Sources */,
+				D9B910962420EB7F00DB8181 /* OrdersViewModel.swift in Sources */,
 				D9F843C92417668F000783E7 /* Config.swift in Sources */,
+				D9B910922420E10600DB8181 /* BillingView.swift in Sources */,
 				D943890024189BCD0069596D /* AccountView.swift in Sources */,
 				D9F843BE241753D2000783E7 /* APICall.swift in Sources */,
 				D99380132414DA410067CB6A /* SceneDelegate.swift in Sources */,
 				D99380312414DBCA0067CB6A /* SearchBarView.swift in Sources */,
+				D9B910982420EBF900DB8181 /* OrderRepository.swift in Sources */,
 				D94388FA24188ED40069596D /* AppState.swift in Sources */,
 				D99380152414DA410067CB6A /* CustomersView.swift in Sources */,
+				D9B9109A2420EC5300DB8181 /* Order.swift in Sources */,
 				D993802B2414DB570067CB6A /* CustomersViewModel.swift in Sources */,
 				D99380332414DBFE0067CB6A /* CustomerSingleRow.swift in Sources */,
 				D9F843C224175425000783E7 /* Publisher.swift in Sources */,
+				D9B9108C2420D7C700DB8181 /* CustomerDetailView.swift in Sources */,
 				D94389072418A5F20069596D /* MockCustomerRepository.swift in Sources */,
 				D96365F72414F60700F1B209 /* LoginViewModel.swift in Sources */,
 				D96365F52414ED0000F1B209 /* LoginView.swift in Sources */,
 				D959070A241F6377005FBCF1 /* ImageLoader.swift in Sources */,
 				D9A8F670241A273D009BBAA6 /* TokenStore.swift in Sources */,
 				D943890324189C760069596D /* MockUserRepository.swift in Sources */,
+				D9B9108F2420E0BD00DB8181 /* OrdersView.swift in Sources */,
 				D94388F624187CCF0069596D /* Customer.swift in Sources */,
 				D9F843C0241753F4000783E7 /* WebRepository.swift in Sources */,
 				D993802E2414DB860067CB6A /* UI.swift in Sources */,

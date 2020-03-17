@@ -1,22 +1,19 @@
 //
-//  CustomerRepository.swift
+//  OrderRepository.swift
 //  perros-app
 //
-//  Created by Alan Steiman on 11/03/2020.
+//  Created by Alan Steiman on 17/03/2020.
 //  Copyright © 2020 Alan Steiman. All rights reserved.
 //
 
-import Combine
 import Foundation
-import SwiftUI
+import Combine
 
-protocol CustomerRepository: WebRepository {
-    func getAll() -> AnyPublisher<[Customer], GenericError>
-    func getOrders(customerId: Customer.ID) -> AnyPublisher<[Order], GenericError>
-    //func getBilling(customerId: Customer.ID) -> AnyPublisher<[Order], GenericError>
+protocol OrderRepository: WebRepository {
+    func getBy(customerId: Customer.ID) -> AnyPublisher<[Order], GenericError>
 }
 
-struct RealCustomerRepository: CustomerRepository {
+struct RealOrderRepository: OrderRepository {
     
     let session: URLSession
     let baseURL: String
@@ -29,15 +26,8 @@ struct RealCustomerRepository: CustomerRepository {
         self.tokenStore = tokenStore
     }
     
-    func getAll() -> AnyPublisher<[Customer], GenericError> {
+    func getBy(customerId: Customer.ID) -> AnyPublisher<[Order], GenericError> {
         return call(endpoint: API.all)
-            .mapError { error in
-            return GenericError.network
-        }.eraseToAnyPublisher()
-    }
-    
-    func getOrders(customerId: Customer.ID) -> AnyPublisher<[Order], GenericError> {
-        return call(endpoint: API.orders(customerId: customerId))
             .mapError { error in
             return GenericError.network
         }.eraseToAnyPublisher()
@@ -46,14 +36,13 @@ struct RealCustomerRepository: CustomerRepository {
 
 // MARK: - Endpoints
 
-extension RealCustomerRepository {
+extension RealOrderRepository {
     enum API {
         case all
-        case orders(customerId: Customer.ID)
     }
 }
 
-extension RealCustomerRepository.API: APICall {
+extension RealOrderRepository.API: APICall {
     var needsToken: Bool {
         true
     }
@@ -62,13 +51,14 @@ extension RealCustomerRepository.API: APICall {
         switch self {
         case .all:
             return "/customers"
-        case .orders(let customerId):
-            return "/customers/\(customerId)/invoices"
         }
     }
     
     var method: String {
-        return "GET"
+        switch self {
+        case .all:
+            return "GET"
+        }
     }
     
     var headers: [String: String]? {

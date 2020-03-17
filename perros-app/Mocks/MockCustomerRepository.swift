@@ -15,4 +15,10 @@ final class MockCustomerRepository: TestWebRepository, CustomerRepository {
         .setFailureType(to: GenericError.self)
         .eraseToAnyPublisher()
     }
+    
+    func getOrders(customerId: Customer.ID) -> AnyPublisher<[Order], GenericError> {
+        Just([Order(id: 1)])
+        .setFailureType(to: GenericError.self)
+        .eraseToAnyPublisher()
+    }
 }

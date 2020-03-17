@@ -37,7 +37,7 @@ struct LoginView: View {
             Button(action: {
                 self.viewModel.login()
             }) {
-                Text("Login")
+                Text(viewModel.isLoading ? "Loading ..." : "Login")
                 .frame(width: 200, height: 20)
                 .padding()
                 .background(viewModel.isValid ? Color.green : lightGreyColor)

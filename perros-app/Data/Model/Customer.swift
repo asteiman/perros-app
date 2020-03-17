@@ -16,6 +16,6 @@ struct Customer: Codable, Identifiable {
 
 extension Customer {
     var avatar: String {
-        return "https://picsum.photos/50"
+        return "https://picsum.photos/id/\(String(id))/100"
     }
 }

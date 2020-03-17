@@ -13,6 +13,7 @@ class LoginViewModel: ObservableObject {
     
     private let repository: UserRepository
     private var disposables = Set<AnyCancellable>()
+    @Published var isLoading: Bool = false
     @Published var isValid: Bool = false
     @Published var isError: Bool = false
     @Published var username: String = "" {
@@ -36,6 +37,7 @@ class LoginViewModel: ObservableObject {
     }
     
     func login() {
+        isLoading = true
         repository.login(username: username, password: password).sink(receiveCompletion: { completion in
             if case .failure(_) = completion {
                 self.isError = true

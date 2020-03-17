@@ -18,6 +18,8 @@ struct CustomersView: View {
         self.viewModel = viewModel
     }
     
+    let cache = TemporaryImageCache()
+    
     var body: some View {
         NavigationView {
             if viewModel.isLoading {
@@ -30,7 +32,9 @@ struct CustomersView: View {
                         Spacer()
                     } else {
                         List(viewModel.dataSource) { model in
-                            CustomerSingleRow(model: model)
+                            NavigationLink(destination: CustomerDetailView(customer: model)) {
+                                CustomerSingleRow(model: model, cache: self.cache)
+                            }
                         }
                         .clipped()
                     }
