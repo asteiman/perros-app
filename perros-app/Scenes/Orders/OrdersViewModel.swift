@@ -13,34 +13,31 @@ import Combine
 
 class OrdersViewModel: ObservableObject {
     @Published var dataSource: [Order] = []
-    @Published var isLoading = true
+    @Published var isLoading = false
     
     private let repository: CustomerRepository
-    private var disposables = Set<AnyCancellable>()
+    private var cancellable: AnyCancellable?
+    private let customerId: Customer.ID
         
-    init(repository: CustomerRepository) {
+    init(repository: CustomerRepository, customerId: Customer.ID) {
         
         self.repository = repository
+        self.customerId = customerId
+        
+        getOrders()
     }
     
-    func getBy(customerId: Customer.ID) {
-        repository.getOrders(customerId: customerId)
+    func getOrders() {
+        guard !isLoading else { return }
+        isLoading = true
+        cancellable = repository.getOrders(customerId: customerId)
         .receive(on: DispatchQueue.main)
-        .sink(
-            receiveCompletion: { [weak self] value in
-                guard let self = self else { return }
-                switch value {
-                case .failure:
-                    self.dataSource = []
-                case .finished:
-                    break
-                }
-                self.isLoading = false
-            },
-            receiveValue: { [weak self] orders in
-                guard let self = self else { return }
-                self.dataSource = orders
-        })
-        .store(in: &disposables)
+        .replaceError(with: [])
+        .handleEvents(receiveCompletion: { _ in self.isLoading = false })
+        .assign(to: \.dataSource, on: self)
+    }
+    
+    deinit {
+        cancellable = nil
     }
 }

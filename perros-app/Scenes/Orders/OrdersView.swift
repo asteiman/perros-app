@@ -32,17 +32,13 @@ struct OrdersView: View {
                         .clipped()
                     }
                 }
-                .resignKeyboardOnDragGesture()
-                .navigationBarTitle("Customers", displayMode: .inline)
             }
-        }.onAppear(perform: {
-            self.viewModel.getBy(customerId: 1)
-        })
+        }
     }
 }
 
 struct OrdersView_Previews: PreviewProvider {
     static var previews: some View {
-        OrdersView(viewModel: OrdersViewModel(repository: MockCustomerRepository()))
+        OrdersView(viewModel: OrdersViewModel(repository: MockCustomerRepository(), customerId: 1))
     }
 }

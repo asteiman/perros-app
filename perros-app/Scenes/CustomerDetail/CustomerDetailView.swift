@@ -37,7 +37,7 @@ struct CustomerDetailView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             if selectedTab == 0 {
-                OrdersView(viewModel: OrdersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: appState.tokenStore)))
+                OrdersView(viewModel: OrdersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: appState.tokenStore), customerId: self.customer.id))
             } else {
                 BillingView()
             }
