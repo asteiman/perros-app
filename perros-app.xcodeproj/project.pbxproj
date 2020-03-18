@@ -44,6 +44,8 @@
 		D9F843C42417545E000783E7 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F843C32417545E000783E7 /* Error.swift */; };
 		D9F843C6241754A8000783E7 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F843C5241754A8000783E7 /* UserRepository.swift */; };
 		D9F843C92417668F000783E7 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F843C82417668F000783E7 /* Config.swift */; };
+		D9F870B42421DC61008CA30A /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F870B32421DC61008CA30A /* Keyboard.swift */; };
+		D9F870B82421FE3A008CA30A /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F870B72421FE3A008CA30A /* TabbarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,8 @@
 		D9F843C32417545E000783E7 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		D9F843C5241754A8000783E7 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		D9F843C82417668F000783E7 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		D9F870B32421DC61008CA30A /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		D9F870B72421FE3A008CA30A /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +248,7 @@
 				D993802D2414DB860067CB6A /* UI.swift */,
 				D9F843C124175425000783E7 /* Publisher.swift */,
 				D9F843C32417545E000783E7 /* Error.swift */,
+				D9F870B32421DC61008CA30A /* Keyboard.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 			children = (
 				D99380302414DBCA0067CB6A /* SearchBarView.swift */,
 				D959070B241F63D8005FBCF1 /* AsyncImage.swift */,
+				D9F870B72421FE3A008CA30A /* TabbarController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -412,12 +418,14 @@
 				D96365F72414F60700F1B209 /* LoginViewModel.swift in Sources */,
 				D96365F52414ED0000F1B209 /* LoginView.swift in Sources */,
 				D959070A241F6377005FBCF1 /* ImageLoader.swift in Sources */,
+				D9F870B82421FE3A008CA30A /* TabbarController.swift in Sources */,
 				D9A8F670241A273D009BBAA6 /* TokenStore.swift in Sources */,
 				D943890324189C760069596D /* MockUserRepository.swift in Sources */,
 				D9B9108F2420E0BD00DB8181 /* OrdersView.swift in Sources */,
 				D94388F624187CCF0069596D /* Customer.swift in Sources */,
 				D9F843C0241753F4000783E7 /* WebRepository.swift in Sources */,
 				D993802E2414DB860067CB6A /* UI.swift in Sources */,
+				D9F870B42421DC61008CA30A /* Keyboard.swift in Sources */,
 				D9F843C42417545E000783E7 /* Error.swift in Sources */,
 				D959070C241F63D8005FBCF1 /* AsyncImage.swift in Sources */,
 				D9F843C6241754A8000783E7 /* UserRepository.swift in Sources */,

@@ -17,10 +17,13 @@ struct AccountView: View {
     }
     
     var body: some View {
-        Button(action: {
-            self.repository.logout()
-        }) {
-            Text("Logout")
+        NavigationView {
+            Button(action: {
+                self.repository.logout()
+            }) {
+                Text("Logout")
+            }
+            .navigationBarTitle("Account", displayMode: .inline)
         }
     }
 }

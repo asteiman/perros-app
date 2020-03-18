@@ -9,17 +9,14 @@
 import SwiftUI
 import Combine
 
-//let asd = "https://perros-api.herokuapp.com/customers"
-
 struct CustomersView: View {
     @ObservedObject var viewModel: CustomersViewModel
+    @EnvironmentObject var appState: AppState
 
     init(viewModel: CustomersViewModel) {
         self.viewModel = viewModel
     }
-    
-    let cache = TemporaryImageCache()
-    
+        
     var body: some View {
         NavigationView {
             if viewModel.isLoading {
@@ -32,8 +29,8 @@ struct CustomersView: View {
                         Spacer()
                     } else {
                         List(viewModel.dataSource) { model in
-                            NavigationLink(destination: CustomerDetailView(customer: model)) {
-                                CustomerSingleRow(model: model, cache: self.cache)
+                            NavigationLink(destination: CustomerDetailView(customer: model, ordersViewModel: OrdersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: AppState().tokenStore), customerId: model.id))) {
+                                CustomerSingleRow(model: model, cache: self.appState.cache)
                             }
                         }
                         .clipped()

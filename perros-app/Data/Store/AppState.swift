@@ -13,6 +13,7 @@ import SwiftUI
 
 final class AppState: ObservableObject {
     @ObservedObject var tokenStore = TokenStore()
+    var cache = TemporaryImageCache()
     
     @Published var isLoggedIn: Bool = false
     

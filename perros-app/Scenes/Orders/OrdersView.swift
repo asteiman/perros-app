@@ -27,7 +27,22 @@ struct OrdersView: View {
                         Spacer()
                     } else {
                         List(viewModel.dataSource) { model in
-                            Text(String(model.id))
+                            VStack(alignment: .trailing) {
+                                HStack {
+                                    ZStack {
+                                        Text(String(model.id))
+                                            .font(.callout)
+                                            .padding(6)
+                                            .foregroundColor(.white)
+                                    }.background(Color.black)
+                                    .opacity(0.8)
+                                    .cornerRadius(10.0)
+                                    .padding(6)
+                                    Spacer()
+                                    Text(model.formattedDate)
+                                }
+                                Text(model.status.label()).foregroundColor(model.status.color())
+                            }
                         }
                         .clipped()
                     }

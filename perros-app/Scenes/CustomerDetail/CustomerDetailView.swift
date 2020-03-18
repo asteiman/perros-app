@@ -13,15 +13,17 @@ struct CustomerDetailView: View {
 
     let customer: Customer
     @State private var selectedTab = 0
+    private let viewModel: OrdersViewModel
     
-    init(customer: Customer) {
+    init(customer: Customer, ordersViewModel: OrdersViewModel) {
         self.customer = customer
+        self.viewModel = ordersViewModel
     }
     
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                AsyncImage(url: URL(string: customer.avatar)!, placeholder: Image("default-avatar").resizable()).frame(width: 100, height: 100).aspectRatio(contentMode: .fit).cornerRadius(100)
+                AsyncImage(url: URL(string: customer.avatar)!, placeholder: Image("default-avatar").resizable(), cache: appState.cache).frame(width: 100, height: 100).aspectRatio(contentMode: .fit).cornerRadius(100)
                 
                 VStack(alignment: .leading) {
                     Spacer().frame(height: 10)
@@ -37,7 +39,7 @@ struct CustomerDetailView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             if selectedTab == 0 {
-                OrdersView(viewModel: OrdersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: appState.tokenStore), customerId: self.customer.id))
+                OrdersView(viewModel: self.viewModel)
             } else {
                 BillingView()
             }
@@ -48,6 +50,6 @@ struct CustomerDetailView: View {
 
 struct CustomerDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomerDetailView(customer: Customer(id: 1, name: "Lorem Ipsum", address: "sed do eiusmod tempor incididunt"))
+        CustomerDetailView(customer: Customer(id: 1, name: "Lorem Ipsum", address: "sed do eiusmod tempor incididunt"), ordersViewModel: OrdersViewModel(repository: MockCustomerRepository(), customerId: 1))
     }
 }

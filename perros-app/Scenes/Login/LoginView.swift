@@ -46,7 +46,7 @@ struct LoginView: View {
                 .padding(.top, 10)
             }
             .disabled(!viewModel.isValid)
-        }.frame(width: 350, height: nil, alignment: .center)
+        }.frame(width: 350, height: nil, alignment: .center).keyboardResponsive()
     }
 }
 

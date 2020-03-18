@@ -10,6 +10,7 @@ import SwiftUI
 
 struct RootView: View {
     @EnvironmentObject var appState: AppState
+    @State private var selected = 0
     
     var body: some View {
         VStack {
@@ -22,16 +23,16 @@ struct RootView: View {
     }
     
     var tabView: some View {
-        TabView {
-            CustomersView(viewModel: CustomersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: appState.tokenStore)))
-            .tabItem {
-                Text("Customers")
-            }
-            AccountView(repository: RealUserRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: appState.tokenStore))
-            .tabItem {
-                Text("Account")
-            }
-        }
+        UIKitTabView([
+            UIKitTabView.Tab(
+                view: CustomersView(viewModel: CustomersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: appState.tokenStore))),
+                barItem: UITabBarItem(title: "Customers", image: UIImage(systemName: "person.3"), selectedImage: UIImage(systemName: "person.3.fill"))
+            ),
+            UIKitTabView.Tab(
+                view: AccountView(repository: RealUserRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: appState.tokenStore)),
+                barItem: UITabBarItem(title: "Account", image: UIImage(systemName: "person.circle"), selectedImage: UIImage(systemName: "person.circle.fill"))
+            )
+        ])
     }
     
     var loginView: some View {

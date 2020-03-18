@@ -47,6 +47,9 @@ extension WebRepository {
 
 private extension Publisher where Output == URLSession.DataTaskPublisher.Output {
     func requestJSON<T: Decodable>(httpCodes: HTTPCodes) -> AnyPublisher<T, APIError> {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        
         return tryMap {
                 assert(!Thread.isMainThread)
                 guard let code = ($0.1 as? HTTPURLResponse)?.statusCode else {
@@ -57,7 +60,7 @@ private extension Publisher where Output == URLSession.DataTaskPublisher.Output 
                 }
                 return $0.0
             }
-            .decode(type: T.self, decoder: JSONDecoder())
+            .decode(type: T.self, decoder: decoder)
             .mapError{ error -> APIError in
                 guard let apiError = error as? APIError else {
                     return .unexpectedResponse
