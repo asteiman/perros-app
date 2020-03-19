@@ -18,6 +18,7 @@ struct OrdersView: View {
     
     var body: some View {
         Group {
+            Text("").onAppear { self.viewModel.getOrders() }
             if viewModel.isLoading {
                 Text("Loading...")
             } else {

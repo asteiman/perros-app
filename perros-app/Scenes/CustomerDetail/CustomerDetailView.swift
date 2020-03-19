@@ -13,11 +13,13 @@ struct CustomerDetailView: View {
 
     let customer: Customer
     @State private var selectedTab = 0
-    private let viewModel: OrdersViewModel
+    private let ordersViewModel: OrdersViewModel
+    private let billingViewModel: BillingViewModel
     
-    init(customer: Customer, ordersViewModel: OrdersViewModel) {
+    init(customer: Customer, ordersViewModel: OrdersViewModel, billingViewModel: BillingViewModel) {
         self.customer = customer
-        self.viewModel = ordersViewModel
+        self.ordersViewModel = ordersViewModel
+        self.billingViewModel = billingViewModel
     }
     
     var body: some View {
@@ -39,9 +41,9 @@ struct CustomerDetailView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             if selectedTab == 0 {
-                OrdersView(viewModel: self.viewModel)
+                OrdersView(viewModel: self.ordersViewModel)
             } else {
-                BillingView()
+                BillingView(viewModel: self.billingViewModel)
             }
             Spacer()
         }.padding(12)
@@ -49,7 +51,9 @@ struct CustomerDetailView: View {
 }
 
 struct CustomerDetailView_Previews: PreviewProvider {
+    static let customerId = 1
+    static let repo = MockCustomerRepository()
     static var previews: some View {
-        CustomerDetailView(customer: Customer(id: 1, name: "Lorem Ipsum", address: "sed do eiusmod tempor incididunt"), ordersViewModel: OrdersViewModel(repository: MockCustomerRepository(), customerId: 1))
+        CustomerDetailView(customer: Customer(id: 1, name: "Lorem Ipsum", address: "sed do eiusmod tempor incididunt"), ordersViewModel: OrdersViewModel(repository: repo, customerId: customerId), billingViewModel: BillingViewModel(repository: repo, customerId: customerId))
     }
 }

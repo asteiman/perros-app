@@ -29,7 +29,9 @@ struct CustomersView: View {
                         Spacer()
                     } else {
                         List(viewModel.dataSource) { model in
-                            NavigationLink(destination: CustomerDetailView(customer: model, ordersViewModel: OrdersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: AppState().tokenStore), customerId: model.id))) {
+                            NavigationLink(destination: CustomerDetailView(
+                                customer: model,
+                                ordersViewModel: OrdersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: self.appState.tokenStore), customerId: model.id), billingViewModel: BillingViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: self.appState.tokenStore), customerId: model.id))) {
                                 CustomerSingleRow(model: model, cache: self.appState.cache)
                             }
                         }

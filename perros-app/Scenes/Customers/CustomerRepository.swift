@@ -13,7 +13,7 @@ import SwiftUI
 protocol CustomerRepository: WebRepository {
     func getAll() -> AnyPublisher<[Customer], GenericError>
     func getOrders(customerId: Customer.ID) -> AnyPublisher<[Order], GenericError>
-    //func getBilling(customerId: Customer.ID) -> AnyPublisher<[Order], GenericError>
+    func getBilling(customerId: Customer.ID) -> AnyPublisher<[Billing], GenericError>
 }
 
 struct RealCustomerRepository: CustomerRepository {
@@ -42,6 +42,13 @@ struct RealCustomerRepository: CustomerRepository {
             return GenericError.network
         }.eraseToAnyPublisher()
     }
+    
+    func getBilling(customerId: Customer.ID) -> AnyPublisher<[Billing], GenericError> {
+        return call(endpoint: API.billing(customerId: customerId))
+            .mapError { error in
+            return GenericError.network
+        }.eraseToAnyPublisher()
+    }
 }
 
 // MARK: - Endpoints
@@ -50,6 +57,7 @@ extension RealCustomerRepository {
     enum API {
         case all
         case orders(customerId: Customer.ID)
+        case billing(customerId: Customer.ID)
     }
 }
 
@@ -64,6 +72,8 @@ extension RealCustomerRepository.API: APICall {
             return "/customers"
         case .orders(let customerId):
             return "/customers/\(customerId)/invoices"
+        case .billing(let customerId):
+            return "/customers/\(customerId)/billings"
         }
     }
     

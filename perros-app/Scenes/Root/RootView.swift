@@ -25,6 +25,10 @@ struct RootView: View {
     var tabView: some View {
         UIKitTabView([
             UIKitTabView.Tab(
+                view: DashboardView(viewModel: DashboardViewModel(repository: RealDashboardRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: appState.tokenStore))),
+                barItem: UITabBarItem(title: "Dashboard", image: UIImage(systemName: "chart.bar"), selectedImage: UIImage(systemName: "chart.bar.fill"))
+            ),
+            UIKitTabView.Tab(
                 view: CustomersView(viewModel: CustomersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: appState.tokenStore))),
                 barItem: UITabBarItem(title: "Customers", image: UIImage(systemName: "person.3"), selectedImage: UIImage(systemName: "person.3.fill"))
             ),

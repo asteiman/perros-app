@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 import SwiftUI
 import Combine
 
@@ -23,8 +22,6 @@ class OrdersViewModel: ObservableObject {
         
         self.repository = repository
         self.customerId = customerId
-        
-        getOrders()
     }
     
     func getOrders() {
@@ -34,6 +31,7 @@ class OrdersViewModel: ObservableObject {
         .receive(on: DispatchQueue.main)
         .replaceError(with: [])
         .handleEvents(receiveCompletion: { _ in self.isLoading = false })
+        .map { $0.sorted { $0.id > $1.id } }
         .assign(to: \.dataSource, on: self)
     }
     
