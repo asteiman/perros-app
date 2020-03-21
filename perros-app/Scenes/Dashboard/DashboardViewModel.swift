@@ -22,8 +22,20 @@ class DashboardViewModel: ObservableObject {
         self.repository = repository
     }
     
-    func getTopBilledCustomers() -> [CustomerDashboard] {
-        return response?.customers ?? []
+    func getAnnualBilling(selectedYear: Int) -> String {
+        guard years.count > selectedYear else { return "" }
+        let year = years[selectedYear]
+        
+        let total = response?.billing.filter ({$0.year == year}).first?.total ?? 0
+        
+        return PriceFormatter.format(rawPrice: total)
+    }
+    
+    func getTopBilledCustomers(selectedYear: Int) -> [CustomerDashboard] {
+        guard years.count > selectedYear else { return [] }
+        let year = years[selectedYear]
+        
+        return response?.customers.filter ({$0.year == year}) ?? []
     }
     
     func getOrderLabel(selectedYear: Int, month: Int) -> String {
@@ -35,14 +47,14 @@ class DashboardViewModel: ObservableObject {
         guard years.count > selectedYear else { return 0 }
         let year = years[selectedYear]
         
-        return response?.orders.filter { $0.year == year }.flatMap {$0.orders}.filter {$0.month == month}.first?.count ?? 0
+        return response?.orders.filter ({ $0.year == year }).flatMap {$0.orders}.filter ({$0.month == month}).first?.count ?? 0
     }
     
     func getTotalOrders(selectedYear: Int) -> String {
         guard years.count > selectedYear else { return "0" }
         let year = years[selectedYear]
         
-        guard let ordersThisYear = response?.orders.filter ({ $0.year == year }) else {
+        guard let ordersThisYear = response?.orders.filter({ $0.year == year }) else {
             return "0"
         }
         

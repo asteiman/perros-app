@@ -11,7 +11,7 @@ import Combine
 
 final class MockDashboardRepository: TestWebRepository, DashboardRepository {
     func get() -> AnyPublisher<DashboardResponse, GenericError> {
-        let response = DashboardResponse(customers: [], orders: [])
+        let response = DashboardResponse(customers: [], orders: [], billing: [])
         return Just(response)
         .setFailureType(to: GenericError.self)
         .eraseToAnyPublisher()

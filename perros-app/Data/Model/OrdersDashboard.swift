@@ -11,10 +11,17 @@ import Foundation
 struct DashboardResponse: Codable {
     var customers: [CustomerDashboard]
     var orders: [OrdersDashboard]
+    var billing: [BillingDashboard]
+}
+
+struct BillingDashboard: Codable {
+    var year: String
+    var total: Double
 }
 
 struct CustomerDashboard: Codable, Identifiable {
     var id: Int
+    var year: String
     var name: String
     var total: Double
 }

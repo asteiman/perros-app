@@ -33,36 +33,39 @@ struct DashboardView: View {
                     Text("Closed orders").font(.title)
                     
                     self.graph()
-                    
+
                     HStack {
                         self.squareView(using: geo, title: "Total Closed Orders", number: self.viewModel.getTotalOrders(selectedYear: self.selectedYear))
-                        self.squareView(using: geo, title: "Annual Billing", number: "555")
-                    }
-                    
-                    ZStack {
-                        Color.white.shadow(color: .gray, radius: 3, x: 0, y: 0)
-                        
-                        VStack {
-                            Text("Top Billed Customers").font(.title).padding(.bottom, 20).padding(.top, 10)
-                            ForEach(self.viewModel.getTopBilledCustomers()) { customer in
-                                VStack(alignment: .leading) {
-                                    HStack {
-                                        Text(customer.name)
-                                        Spacer()
-                                        Text(PriceFormatter.format(rawPrice: customer.total))
-                                    }
-                                    Divider()
-                                }
-                            }.padding(.leading, 16).padding(.trailing, 16)
-                        }
-                    }.padding()
-                    
+                        self.squareView(using: geo, title: "Annual Billing", number: self.viewModel.getAnnualBilling(selectedYear: self.selectedYear))
+                    }.padding(.top, 16)
+
+                    self.topBilled()
                 }
             }.navigationBarTitle("Dashboard", displayMode: .inline)
                 .onAppear {
                     self.viewModel.getOrders()
             }
         }
+    }
+    
+    func topBilled() -> some View {
+        return ZStack {
+            Color.white.shadow(color: .gray, radius: 3, x: 0, y: 0)
+            
+            VStack {
+                Text("Top Billed Customers").font(.title).padding(.bottom, 20).padding(.top, 10)
+                ForEach(self.viewModel.getTopBilledCustomers(selectedYear: self.selectedYear)) { customer in
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text(customer.name).lineLimit(1)
+                            Spacer()
+                            Text(PriceFormatter.format(rawPrice: customer.total))
+                        }
+                        Divider()
+                    }
+                }.padding(.leading, 16).padding(.trailing, 16)
+            }
+        }.padding()
     }
     
     func squareView(using proxy: GeometryProxy, title: String, number: String) -> some View {
@@ -103,6 +106,7 @@ struct DashboardView: View {
                         Text("\(DateUtilities.monthAbbreviationFromInt(month))")
                             .font(.footnote)
                             .frame(height: 20)
+                            .padding(.bottom, 10)
                     }
                 }
             }
