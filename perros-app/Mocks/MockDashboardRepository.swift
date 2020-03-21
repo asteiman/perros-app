@@ -10,8 +10,9 @@ import Foundation
 import Combine
 
 final class MockDashboardRepository: TestWebRepository, DashboardRepository {
-    func getOrders() -> AnyPublisher<[OrdersDashboard], GenericError> {
-        Just([OrdersDashboard(year: "year", orders: [OrdersDashboard.OrdersPerMonth(month: 1, count: 100)])])
+    func get() -> AnyPublisher<DashboardResponse, GenericError> {
+        let response = DashboardResponse(customers: [], orders: [])
+        return Just(response)
         .setFailureType(to: GenericError.self)
         .eraseToAnyPublisher()
     }

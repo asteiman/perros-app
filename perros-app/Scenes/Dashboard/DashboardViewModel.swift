@@ -11,16 +11,19 @@ import SwiftUI
 import Combine
 
 class DashboardViewModel: ObservableObject {
-    private var all: [OrdersDashboard] = []
+    private var response: DashboardResponse?
     @Published var years: [String] = []
     @Published var isLoading = false
-    private var disposables = [AnyCancellable]()
     
     private let repository: DashboardRepository
     private var cancellable: AnyCancellable?
         
     init(repository: DashboardRepository) {
         self.repository = repository
+    }
+    
+    func getTopBilledCustomers() -> [CustomerDashboard] {
+        return response?.customers ?? []
     }
     
     func getOrderLabel(selectedYear: Int, month: Int) -> String {
@@ -32,20 +35,31 @@ class DashboardViewModel: ObservableObject {
         guard years.count > selectedYear else { return 0 }
         let year = years[selectedYear]
         
-        return all.filter { $0.year == year }.flatMap {$0.orders}.filter {$0.month == month}.first?.count ?? 0
+        return response?.orders.filter { $0.year == year }.flatMap {$0.orders}.filter {$0.month == month}.first?.count ?? 0
+    }
+    
+    func getTotalOrders(selectedYear: Int) -> String {
+        guard years.count > selectedYear else { return "0" }
+        let year = years[selectedYear]
+        
+        guard let ordersThisYear = response?.orders.filter ({ $0.year == year }) else {
+            return "0"
+        }
+        
+        return String(ordersThisYear.flatMap { $0.orders }.reduce(0) { (total, thisMonth) in
+            return total + thisMonth.count
+        })
     }
     
     func getOrders() {
         guard !isLoading else { return }
         isLoading = true
-        cancellable = repository.getOrders()
-        .receive(on: DispatchQueue.main)
-        .replaceError(with: [])
-        .handleEvents(receiveCompletion: { _ in
+        cancellable = repository.get().sink(receiveCompletion: { years in
             self.isLoading = false
-            self.years = self.all.map { $0.year }
+        }, receiveValue: { response in
+            self.response = response
+            self.years = response.orders.map { $0.year }
         })
-        .assign(to: \.all, on: self)
     }
     
     deinit {

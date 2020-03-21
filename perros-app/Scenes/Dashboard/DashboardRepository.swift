@@ -11,7 +11,7 @@ import Foundation
 import SwiftUI
 
 protocol DashboardRepository: WebRepository {
-    func getOrders() -> AnyPublisher<[OrdersDashboard], GenericError>
+    func get() -> AnyPublisher<DashboardResponse, GenericError>
 }
 
 struct RealDashboardRepository: DashboardRepository {
@@ -27,7 +27,7 @@ struct RealDashboardRepository: DashboardRepository {
         self.tokenStore = tokenStore
     }
     
-    func getOrders() -> AnyPublisher<[OrdersDashboard], GenericError> {
+    func get() -> AnyPublisher<DashboardResponse, GenericError> {
         return call(endpoint: API.all)
             .mapError { error in
             return GenericError.network
