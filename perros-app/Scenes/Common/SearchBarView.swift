@@ -11,6 +11,7 @@ import SwiftUI
 struct SearchBarView: View {
     
     @Binding var searchText: String
+    @Binding var sortAsc: Bool
     @State private var showCancelButton: Bool = false
     var onCommit: () ->Void = {print("onCommit")}
     
@@ -50,10 +51,24 @@ struct SearchBarView: View {
                         self.showCancelButton = false
                     }
                     .foregroundColor(Color(.systemBlue))
+                } else {
+                    Button(action: {
+                        self.sortAsc.toggle()
+                    }) {
+                        Image(systemName: "arrow.up.arrow.down").foregroundColor(Color(ColorKit.danube))
+                    }
                 }
             }
             .padding(.horizontal)
             .navigationBarHidden(showCancelButton)
         }
+    }
+}
+
+struct SearchBarView_Previews: PreviewProvider {
+    @State static var text = ""
+    @State static var sortAsc = true
+    static var previews: some View {
+        SearchBarView(searchText: $text, sortAsc: $sortAsc)
     }
 }

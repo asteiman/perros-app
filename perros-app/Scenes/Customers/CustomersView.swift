@@ -23,7 +23,7 @@ struct CustomersView: View {
                 Text("Loading...")
             } else {
                 VStack {
-                    SearchBarView(searchText: $viewModel.searchText)
+                    SearchBarView(searchText: $viewModel.searchText, sortAsc: $viewModel.sortAsc)
                     if viewModel.dataSource.isEmpty {
                         Text("No results")
                         Spacer()
@@ -34,7 +34,7 @@ struct CustomersView: View {
                                 ordersViewModel: OrdersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: self.appState.tokenStore), customerId: model.id), billingViewModel: BillingViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: self.appState.tokenStore), customerId: model.id))) {
                                 CustomerSingleRow(model: model, cache: self.appState.cache)
                             }
-                        }
+                            }.id(UUID())
                         .clipped()
                     }
                 }

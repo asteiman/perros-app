@@ -10,6 +10,7 @@ import SwiftUI
 import Combine
 
 class CustomersViewModel: ObservableObject {
+    @Published var sortAsc: Bool = true
     @Published var searchText: String = ""
     @Published var dataSource: [Customer] = []
     @Published var isLoading = true
@@ -30,6 +31,20 @@ class CustomersViewModel: ObservableObject {
             .debounce(for: .seconds(0.5), scheduler: scheduler)
             .sink(receiveValue: filterCustomers(withName:))
             .store(in: &disposables)
+        
+        $sortAsc.dropFirst(1)
+            .receive(on: scheduler)
+            .sink(receiveValue: sortCustomers(asc:))
+            .store(in: &disposables)
+    }
+    
+    private func sortCustomers(asc: Bool) {
+        DispatchQueue.main.async {
+            self.all.sort { (a, b) -> Bool in
+                self.sortAsc ? a.id < b.id : a.id > b.id
+            }
+            self.dataSource = self.all
+        }
     }
     
     private func getAll() {
