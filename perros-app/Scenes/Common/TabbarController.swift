@@ -48,6 +48,9 @@ struct TabBarController: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UITabBarController {
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = controllers
+        tabBarController.tabBar.tintColor = .white
+        tabBarController.tabBar.unselectedItemTintColor = .white
+        tabBarController.tabBar.barTintColor = ColorKit.danube
         return tabBarController
     }
 }

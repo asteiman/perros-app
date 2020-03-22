@@ -24,6 +24,11 @@ struct AccountView: View {
                 Text("Logout")
             }
             .navigationBarTitle("Account", displayMode: .inline)
+            .background(NavigationConfigurator { nc in
+                nc.navigationBar.barTintColor = ColorKit.danube
+                let titleDict: NSDictionary = [NSAttributedString.Key.foregroundColor: UIColor.white]
+                nc.navigationBar.titleTextAttributes = titleDict as? [NSAttributedString.Key : Any]
+            })
         }
     }
 }

@@ -30,6 +30,8 @@
 		D99380312414DBCA0067CB6A /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99380302414DBCA0067CB6A /* SearchBarView.swift */; };
 		D99380332414DBFE0067CB6A /* CustomerSingleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99380322414DBFE0067CB6A /* CustomerSingleRow.swift */; };
 		D9A8F670241A273D009BBAA6 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A8F66F241A273D009BBAA6 /* TokenStore.swift */; };
+		D9AD542124272CDE007CDE71 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AD542024272CDE007CDE71 /* NavigationConfigurator.swift */; };
+		D9AD542324272DE2007CDE71 /* ColorKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AD542224272DE2007CDE71 /* ColorKit.swift */; };
 		D9B6811A242236E900BBE9FA /* BillingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B68119242236E900BBE9FA /* BillingViewModel.swift */; };
 		D9B6811C2422374900BBE9FA /* Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B6811B2422374900BBE9FA /* Billing.swift */; };
 		D9B6811E2422440100BBE9FA /* PriceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B6811D2422440100BBE9FA /* PriceFormatter.swift */; };
@@ -83,6 +85,8 @@
 		D99380302414DBCA0067CB6A /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		D99380322414DBFE0067CB6A /* CustomerSingleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerSingleRow.swift; sourceTree = "<group>"; };
 		D9A8F66F241A273D009BBAA6 /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
+		D9AD542024272CDE007CDE71 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
+		D9AD542224272DE2007CDE71 /* ColorKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorKit.swift; sourceTree = "<group>"; };
 		D9B68119242236E900BBE9FA /* BillingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingViewModel.swift; sourceTree = "<group>"; };
 		D9B6811B2422374900BBE9FA /* Billing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Billing.swift; sourceTree = "<group>"; };
 		D9B6811D2422440100BBE9FA /* PriceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFormatter.swift; sourceTree = "<group>"; };
@@ -351,6 +355,8 @@
 				D9B910932420E78500DB8181 /* ImageCache.swift */,
 				D9B6811D2422440100BBE9FA /* PriceFormatter.swift */,
 				D9EC1F8424237E3500FE186E /* DateUtilities.swift */,
+				D9AD542024272CDE007CDE71 /* NavigationConfigurator.swift */,
+				D9AD542224272DE2007CDE71 /* ColorKit.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -434,6 +440,7 @@
 			files = (
 				D9B910942420E78500DB8181 /* ImageCache.swift in Sources */,
 				D94388F324187C280069596D /* CustomerRepository.swift in Sources */,
+				D9AD542324272DE2007CDE71 /* ColorKit.swift in Sources */,
 				D9F843BB2416682B000783E7 /* RootView.swift in Sources */,
 				D943890524189F500069596D /* TestWebRepository.swift in Sources */,
 				D9B681202422444D00BBE9FA /* BillingReduced.swift in Sources */,
@@ -444,6 +451,7 @@
 				D9EC1F7D24235A3900FE186E /* OrdersDashboard.swift in Sources */,
 				D9EC1F8324235C5800FE186E /* MockDashboardRepository.swift in Sources */,
 				D943890024189BCD0069596D /* AccountView.swift in Sources */,
+				D9AD542124272CDE007CDE71 /* NavigationConfigurator.swift in Sources */,
 				D9F843BE241753D2000783E7 /* APICall.swift in Sources */,
 				D99380132414DA410067CB6A /* SceneDelegate.swift in Sources */,
 				D99380312414DBCA0067CB6A /* SearchBarView.swift in Sources */,

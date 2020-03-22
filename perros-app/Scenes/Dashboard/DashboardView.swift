@@ -44,7 +44,11 @@ struct DashboardView: View {
             }.navigationBarTitle("Dashboard", displayMode: .inline)
                 .onAppear {
                     self.viewModel.getOrders()
-            }
+            }.background(NavigationConfigurator { nc in
+                nc.navigationBar.barTintColor = ColorKit.danube
+                let titleDict: NSDictionary = [NSAttributedString.Key.foregroundColor: UIColor.white]
+                nc.navigationBar.titleTextAttributes = titleDict as? [NSAttributedString.Key : Any]
+            })
         }
     }
     
@@ -75,7 +79,7 @@ struct DashboardView: View {
         return ZStack {
             Color.white
             VStack {
-                Text(title).font(.headline).padding(.top, 20)
+                Text(title).font(.headline).padding(.top, 20).lineLimit(1).minimumScaleFactor(0.5)
                 Spacer()
             }
             VStack {
@@ -87,8 +91,7 @@ struct DashboardView: View {
     
     func graph() -> some View {
         return ZStack {
-            Color.white.frame(width: nil, height: 220).cornerRadius(cornerRadius).padding()
-                .frame(width: nil, height: 200).shadow(color: .gray, radius: 3, x: 0, y: 0)
+            ColorKit.lightGreyColor.frame(width: nil, height: 220)
             HStack {
                 ForEach(1..<13) { month in
                     VStack {
@@ -105,7 +108,7 @@ struct DashboardView: View {
                             .cornerRadius(self.cornerRadius)
                         Text("\(DateUtilities.monthAbbreviationFromInt(month))")
                             .font(.footnote)
-                            .frame(height: 20)
+                            .frame(width: nil, height: 20)
                             .padding(.bottom, 10)
                     }
                 }

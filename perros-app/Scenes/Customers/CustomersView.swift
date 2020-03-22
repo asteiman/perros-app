@@ -40,8 +40,13 @@ struct CustomersView: View {
                 }
                 .resignKeyboardOnDragGesture()
                 .navigationBarTitle("Customers", displayMode: .inline)
+                .background(NavigationConfigurator { nc in
+                    nc.navigationBar.barTintColor = ColorKit.danube
+                    let titleDict: NSDictionary = [NSAttributedString.Key.foregroundColor: UIColor.white]
+                    nc.navigationBar.titleTextAttributes = titleDict as? [NSAttributedString.Key : Any]
+                })
             }
-        }
+        }.accentColor(.white)
     }
 }
 
