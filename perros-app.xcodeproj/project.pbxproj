@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D93DB526242A3B63003D5AD5 /* RequestMocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93DB525242A3B63003D5AD5 /* RequestMocking.swift */; };
+		D93DB529242A3BB1003D5AD5 /* MockedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93DB528242A3BB1003D5AD5 /* MockedResponse.swift */; };
+		D93DB52D242A4ADD003D5AD5 /* CustomerRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93DB52C242A4ADD003D5AD5 /* CustomerRepositoryTests.swift */; };
+		D93DB52F242A4F86003D5AD5 /* MockTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93DB52E242A4F86003D5AD5 /* MockTokenStore.swift */; };
+		D93DB533242A55F9003D5AD5 /* MockedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93DB532242A55F9003D5AD5 /* MockedData.swift */; };
+		D93DB535242A58A7003D5AD5 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93DB534242A58A7003D5AD5 /* Helpers.swift */; };
 		D94388F324187C280069596D /* CustomerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94388F224187C280069596D /* CustomerRepository.swift */; };
 		D94388F624187CCF0069596D /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94388F524187CCF0069596D /* Customer.swift */; };
 		D94388FA24188ED40069596D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94388F924188ED40069596D /* AppState.swift */; };
@@ -43,6 +49,8 @@
 		D9B910962420EB7F00DB8181 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B910952420EB7F00DB8181 /* OrdersViewModel.swift */; };
 		D9B910982420EBF900DB8181 /* OrderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B910972420EBF900DB8181 /* OrderRepository.swift */; };
 		D9B9109A2420EC5300DB8181 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B910992420EC5300DB8181 /* Order.swift */; };
+		D9EA74EC2428D93900CEB80C /* OrdersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EA74EB2428D93900CEB80C /* OrdersViewModelTests.swift */; };
+		D9EA74F42428DAA700CEB80C /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EA74F32428DAA700CEB80C /* XCTestCase.swift */; };
 		D9EC1F772423357B00FE186E /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC1F762423357B00FE186E /* DashboardView.swift */; };
 		D9EC1F7D24235A3900FE186E /* OrdersDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC1F7C24235A3900FE186E /* OrdersDashboard.swift */; };
 		D9EC1F7F24235A7B00FE186E /* DashboardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC1F7E24235A7B00FE186E /* DashboardRepository.swift */; };
@@ -60,7 +68,23 @@
 		D9F870B82421FE3A008CA30A /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F870B72421FE3A008CA30A /* TabbarController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D9EA74EE2428D93900CEB80C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D99380052414DA410067CB6A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D993800C2414DA410067CB6A;
+			remoteInfo = "perros-app";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		D93DB525242A3B63003D5AD5 /* RequestMocking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMocking.swift; sourceTree = "<group>"; };
+		D93DB528242A3BB1003D5AD5 /* MockedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedResponse.swift; sourceTree = "<group>"; };
+		D93DB52C242A4ADD003D5AD5 /* CustomerRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerRepositoryTests.swift; sourceTree = "<group>"; };
+		D93DB52E242A4F86003D5AD5 /* MockTokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTokenStore.swift; sourceTree = "<group>"; };
+		D93DB532242A55F9003D5AD5 /* MockedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedData.swift; sourceTree = "<group>"; };
+		D93DB534242A58A7003D5AD5 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		D94388F224187C280069596D /* CustomerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerRepository.swift; sourceTree = "<group>"; };
 		D94388F524187CCF0069596D /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		D94388F924188ED40069596D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -98,6 +122,10 @@
 		D9B910952420EB7F00DB8181 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
 		D9B910972420EBF900DB8181 /* OrderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRepository.swift; sourceTree = "<group>"; };
 		D9B910992420EC5300DB8181 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		D9EA74E92428D93900CEB80C /* perros-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perros-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9EA74EB2428D93900CEB80C /* OrdersViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModelTests.swift; sourceTree = "<group>"; };
+		D9EA74ED2428D93900CEB80C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9EA74F32428DAA700CEB80C /* XCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
 		D9EC1F762423357B00FE186E /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		D9EC1F7C24235A3900FE186E /* OrdersDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersDashboard.swift; sourceTree = "<group>"; };
 		D9EC1F7E24235A7B00FE186E /* DashboardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRepository.swift; sourceTree = "<group>"; };
@@ -124,9 +152,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D9EA74E62428D93900CEB80C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D93DB527242A3BA6003D5AD5 /* NetworkMocking */ = {
+			isa = PBXGroup;
+			children = (
+				D93DB528242A3BB1003D5AD5 /* MockedResponse.swift */,
+				D93DB525242A3B63003D5AD5 /* RequestMocking.swift */,
+			);
+			path = NetworkMocking;
+			sourceTree = "<group>";
+		};
+		D93DB52A242A4AC2003D5AD5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D9EA74EB2428D93900CEB80C /* OrdersViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D93DB52B242A4ACA003D5AD5 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				D93DB52C242A4ADD003D5AD5 /* CustomerRepositoryTests.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		D94388F424187CC80069596D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +195,7 @@
 				D9B6811B2422374900BBE9FA /* Billing.swift */,
 				D9B6811F2422444D00BBE9FA /* BillingReduced.swift */,
 				D9EC1F7C24235A3900FE186E /* OrdersDashboard.swift */,
+				D93DB532242A55F9003D5AD5 /* MockedData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				D993800F2414DA410067CB6A /* perros-app */,
+				D9EA74EA2428D93900CEB80C /* perros-appTests */,
 				D993800E2414DA410067CB6A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -198,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				D993800D2414DA410067CB6A /* perros-app.app */,
+				D9EA74E92428D93900CEB80C /* perros-appTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -319,6 +382,20 @@
 			path = Billing;
 			sourceTree = "<group>";
 		};
+		D9EA74EA2428D93900CEB80C /* perros-appTests */ = {
+			isa = PBXGroup;
+			children = (
+				D93DB52B242A4ACA003D5AD5 /* Repositories */,
+				D93DB52A242A4AC2003D5AD5 /* ViewModels */,
+				D93DB527242A3BA6003D5AD5 /* NetworkMocking */,
+				D9EA74ED2428D93900CEB80C /* Info.plist */,
+				D9EA74F32428DAA700CEB80C /* XCTestCase.swift */,
+				D93DB52E242A4F86003D5AD5 /* MockTokenStore.swift */,
+				D93DB534242A58A7003D5AD5 /* Helpers.swift */,
+			);
+			path = "perros-appTests";
+			sourceTree = "<group>";
+		};
 		D9EC1F752423356F00FE186E /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +461,24 @@
 			productReference = D993800D2414DA410067CB6A /* perros-app.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D9EA74E82428D93900CEB80C /* perros-appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9EA74F22428D93900CEB80C /* Build configuration list for PBXNativeTarget "perros-appTests" */;
+			buildPhases = (
+				D9EA74E52428D93900CEB80C /* Sources */,
+				D9EA74E62428D93900CEB80C /* Frameworks */,
+				D9EA74E72428D93900CEB80C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9EA74EF2428D93900CEB80C /* PBXTargetDependency */,
+			);
+			name = "perros-appTests";
+			productName = "perros-appTests";
+			productReference = D9EA74E92428D93900CEB80C /* perros-appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -396,6 +491,10 @@
 				TargetAttributes = {
 					D993800C2414DA410067CB6A = {
 						CreatedOnToolsVersion = 11.3.1;
+					};
+					D9EA74E82428D93900CEB80C = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = D993800C2414DA410067CB6A;
 					};
 				};
 			};
@@ -416,6 +515,7 @@
 			projectRoot = "";
 			targets = (
 				D993800C2414DA410067CB6A /* perros-app */,
+				D9EA74E82428D93900CEB80C /* perros-appTests */,
 			);
 		};
 /* End PBXProject section */
@@ -428,6 +528,13 @@
 				D993801D2414DA430067CB6A /* LaunchScreen.storyboard in Resources */,
 				D993801A2414DA430067CB6A /* Preview Assets.xcassets in Resources */,
 				D99380172414DA430067CB6A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EA74E72428D93900CEB80C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +553,7 @@
 				D9B681202422444D00BBE9FA /* BillingReduced.swift in Sources */,
 				D99380112414DA410067CB6A /* AppDelegate.swift in Sources */,
 				D9B910962420EB7F00DB8181 /* OrdersViewModel.swift in Sources */,
+				D93DB533242A55F9003D5AD5 /* MockedData.swift in Sources */,
 				D9F843C92417668F000783E7 /* Config.swift in Sources */,
 				D9B910922420E10600DB8181 /* BillingView.swift in Sources */,
 				D9EC1F7D24235A3900FE186E /* OrdersDashboard.swift in Sources */,
@@ -488,7 +596,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D9EA74E52428D93900CEB80C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9EA74F42428DAA700CEB80C /* XCTestCase.swift in Sources */,
+				D93DB535242A58A7003D5AD5 /* Helpers.swift in Sources */,
+				D93DB529242A3BB1003D5AD5 /* MockedResponse.swift in Sources */,
+				D93DB526242A3B63003D5AD5 /* RequestMocking.swift in Sources */,
+				D9EA74EC2428D93900CEB80C /* OrdersViewModelTests.swift in Sources */,
+				D93DB52D242A4ADD003D5AD5 /* CustomerRepositoryTests.swift in Sources */,
+				D93DB52F242A4F86003D5AD5 /* MockTokenStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D9EA74EF2428D93900CEB80C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D993800C2414DA410067CB6A /* perros-app */;
+			targetProxy = D9EA74EE2428D93900CEB80C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D993801B2414DA430067CB6A /* LaunchScreen.storyboard */ = {
@@ -656,6 +786,46 @@
 			};
 			name = Release;
 		};
+		D9EA74F02428D93900CEB80C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9SR3A23TQJ;
+				INFOPLIST_FILE = "perros-appTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "alan.perros-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/perros-app.app/perros-app";
+			};
+			name = Debug;
+		};
+		D9EA74F12428D93900CEB80C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9SR3A23TQJ;
+				INFOPLIST_FILE = "perros-appTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "alan.perros-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/perros-app.app/perros-app";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -673,6 +843,15 @@
 			buildConfigurations = (
 				D99380222414DA430067CB6A /* Debug */,
 				D99380232414DA430067CB6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9EA74F22428D93900CEB80C /* Build configuration list for PBXNativeTarget "perros-appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9EA74F02428D93900CEB80C /* Debug */,
+				D9EA74F12428D93900CEB80C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

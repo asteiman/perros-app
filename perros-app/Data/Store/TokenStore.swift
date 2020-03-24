@@ -10,7 +10,14 @@ import Foundation
 import KeychainAccess
 import Combine
 
-final class TokenStore: ObservableObject {
+protocol TokenStorage {
+    var token: String? { get }
+    
+    func setToken(token: String)
+    func revoke()
+}
+
+final class TokenStore: TokenStorage, ObservableObject {
     let tokenSubject = PassthroughSubject<Void, Never>()
 
     private(set) var token: String?

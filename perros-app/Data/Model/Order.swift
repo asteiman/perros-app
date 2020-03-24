@@ -23,6 +23,12 @@ extension Order {
     }
 }
 
+extension Order: Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
 extension Order {
     enum Status: Int, Codable {
         case draft

@@ -19,3 +19,7 @@ extension Customer {
         return "https://picsum.photos/id/\(String(id))/100"
     }
 }
+
+extension Customer: Equatable {
+    
+}

@@ -13,7 +13,7 @@ protocol WebRepository {
     var session: URLSession { get }
     var baseURL: String { get }
     var bgQueue: DispatchQueue { get }
-    var tokenStore: TokenStore { get }
+    var tokenStore: TokenStorage { get }
 }
 
 extension WebRepository {

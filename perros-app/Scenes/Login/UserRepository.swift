@@ -18,9 +18,9 @@ struct RealUserRepository: UserRepository {
     let session: URLSession
     let baseURL: String
     let bgQueue = DispatchQueue(label: "bg_parse_queue")
-    let tokenStore: TokenStore
+    let tokenStore: TokenStorage
     
-    init(session: URLSession, baseURL: String, tokenStore: TokenStore) {
+    init(session: URLSession, baseURL: String, tokenStore: TokenStorage) {
         self.session = session
         self.baseURL = baseURL
         self.tokenStore = tokenStore

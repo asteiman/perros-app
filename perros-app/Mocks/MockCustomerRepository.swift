@@ -10,20 +10,40 @@ import Foundation
 import Combine
 
 final class MockCustomerRepository: TestWebRepository, CustomerRepository {
+    let response: [Codable]?
+    let error: Error?
+    
+    init(response: [Codable]? = nil, error: Error? = nil) {
+        self.response = response
+        self.error = error
+    }
+    
     func getAll() -> AnyPublisher<[Customer], GenericError> {
-        Just([Customer(id: 1, name: "John Doe", address: "1 Infinite Loop")])
+        if let error = error as? GenericError {
+            return Fail(error: error).eraseToAnyPublisher()
+        }
+        
+        return Just(response as! [Customer])
         .setFailureType(to: GenericError.self)
         .eraseToAnyPublisher()
     }
     
     func getOrders(customerId: Customer.ID) -> AnyPublisher<[Order], GenericError> {
-        Just([Order(id: 1, date: Date(), status: .closed)])
+        if let error = error as? GenericError {
+            return Fail(error: error).eraseToAnyPublisher()
+        }
+        
+        return Just(response as! [Order])
         .setFailureType(to: GenericError.self)
         .eraseToAnyPublisher()
     }
     
     func getBilling(customerId: Customer.ID) -> AnyPublisher<[Billing], GenericError> {
-        Just([Billing(id: 1, year: "2020", month: "01", white: 1.0, black: 1.0, credit: 0)])
+        if let error = error as? GenericError {
+            return Fail(error: error).eraseToAnyPublisher()
+        }
+        
+        return Just(response as! [Billing])
         .setFailureType(to: GenericError.self)
         .eraseToAnyPublisher()
     }

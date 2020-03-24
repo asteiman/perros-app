@@ -26,4 +26,8 @@ final class AppState: ObservableObject {
         
         tokenStore.load()
     }
+    
+    func getTokenStorage() -> TokenStorage {
+        return tokenStore
+    }
 }

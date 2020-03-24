@@ -31,7 +31,7 @@ struct CustomersView: View {
                         List(viewModel.dataSource) { model in
                             NavigationLink(destination: CustomerDetailView(
                                 customer: model,
-                                ordersViewModel: OrdersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: self.appState.tokenStore), customerId: model.id), billingViewModel: BillingViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: self.appState.tokenStore), customerId: model.id))) {
+                                ordersViewModel: OrdersViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: self.appState.getTokenStorage()), customerId: model.id), billingViewModel: BillingViewModel(repository: RealCustomerRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: self.appState.getTokenStorage()), customerId: model.id))) {
                                 CustomerSingleRow(model: model, cache: self.appState.cache)
                             }
                             }.id(UUID())
