@@ -20,3 +20,20 @@ extension Result where Success: Equatable {
         }
     }
 }
+
+extension Result {
+    func assertFailure(_ message: String, file: StaticString = #file, line: UInt = #line) {
+        switch self {
+        case let .success(value):
+            XCTFail("Unexpected success: \(value)", file: file, line: line)
+        case let .failure(error):
+            XCTAssertEqual(error.localizedDescription, message, file: file, line: line)
+        }
+    }
+}
+
+extension NSError {
+    static var test: NSError {
+        return NSError(domain: "test", code: 0, userInfo: [NSLocalizedDescriptionKey: "Test error"])
+    }
+}

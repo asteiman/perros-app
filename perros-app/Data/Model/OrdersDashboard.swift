@@ -14,24 +14,30 @@ struct DashboardResponse: Codable {
     var billing: [BillingDashboard]
 }
 
-struct BillingDashboard: Codable {
+struct BillingDashboard: Codable, Equatable {
     var year: String
     var total: Double
 }
 
-struct CustomerDashboard: Codable, Identifiable {
+struct CustomerDashboard: Codable, Identifiable, Equatable {
     var id: Int
     var year: String
     var name: String
     var total: Double
 }
 
-struct OrdersDashboard: Codable {
+struct OrdersDashboard: Codable, Equatable {
     let year: String
     let orders: [OrdersPerMonth]
     
-    struct OrdersPerMonth: Codable {
+    struct OrdersPerMonth: Codable, Equatable {
         let month: Int
         let count: Int
+    }
+}
+
+extension DashboardResponse: Equatable {
+    static func == (lhs: DashboardResponse, rhs: DashboardResponse) -> Bool {
+        return lhs.billing == rhs.billing && lhs.customers == rhs.customers && lhs.orders == rhs.orders
     }
 }

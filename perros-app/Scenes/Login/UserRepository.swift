@@ -10,7 +10,7 @@ import Combine
 import Foundation
 
 protocol UserRepository: WebRepository {
-    func login(username: String, password: String) -> AnyPublisher<Void, GenericError>
+    func login(username: String, password: String) -> AnyPublisher<Void, Error>
     func logout()
 }
 
@@ -26,7 +26,7 @@ struct RealUserRepository: UserRepository {
         self.tokenStore = tokenStore
     }
     
-    func login(username: String, password: String) -> AnyPublisher<Void, GenericError> {
+    func login(username: String, password: String) -> AnyPublisher<Void, Error> {
         let response: AnyPublisher<LoginResponse, APIError> = call(endpoint: API.login(username: username, password: password))
         
         return response.map { response in

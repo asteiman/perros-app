@@ -16,3 +16,5 @@ struct Billing: Codable, Identifiable {
     var black: Double
     var credit: Double
 }
+
+extension Billing: Equatable {}

@@ -15,10 +15,10 @@ final class MockTokenStore: TokenStorage {
     }()
     
     func setToken(token: String) {
-        
+        self.token = token
     }
     
     func revoke() {
-        
+        self.token = nil
     }
 }

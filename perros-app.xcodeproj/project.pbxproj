@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D934511C242B38E0005447A7 /* DashboardRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D934511B242B38E0005447A7 /* DashboardRepositoryTests.swift */; };
+		D934511E242B408A005447A7 /* UserRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D934511D242B408A005447A7 /* UserRepositoryTests.swift */; };
 		D93DB526242A3B63003D5AD5 /* RequestMocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93DB525242A3B63003D5AD5 /* RequestMocking.swift */; };
 		D93DB529242A3BB1003D5AD5 /* MockedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93DB528242A3BB1003D5AD5 /* MockedResponse.swift */; };
 		D93DB52D242A4ADD003D5AD5 /* CustomerRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93DB52C242A4ADD003D5AD5 /* CustomerRepositoryTests.swift */; };
@@ -79,6 +81,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D934511B242B38E0005447A7 /* DashboardRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRepositoryTests.swift; sourceTree = "<group>"; };
+		D934511D242B408A005447A7 /* UserRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryTests.swift; sourceTree = "<group>"; };
 		D93DB525242A3B63003D5AD5 /* RequestMocking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMocking.swift; sourceTree = "<group>"; };
 		D93DB528242A3BB1003D5AD5 /* MockedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedResponse.swift; sourceTree = "<group>"; };
 		D93DB52C242A4ADD003D5AD5 /* CustomerRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerRepositoryTests.swift; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				D93DB52C242A4ADD003D5AD5 /* CustomerRepositoryTests.swift */,
+				D934511B242B38E0005447A7 /* DashboardRepositoryTests.swift */,
+				D934511D242B408A005447A7 /* UserRepositoryTests.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -604,8 +610,10 @@
 				D93DB535242A58A7003D5AD5 /* Helpers.swift in Sources */,
 				D93DB529242A3BB1003D5AD5 /* MockedResponse.swift in Sources */,
 				D93DB526242A3B63003D5AD5 /* RequestMocking.swift in Sources */,
+				D934511C242B38E0005447A7 /* DashboardRepositoryTests.swift in Sources */,
 				D9EA74EC2428D93900CEB80C /* OrdersViewModelTests.swift in Sources */,
 				D93DB52D242A4ADD003D5AD5 /* CustomerRepositoryTests.swift in Sources */,
+				D934511E242B408A005447A7 /* UserRepositoryTests.swift in Sources */,
 				D93DB52F242A4F86003D5AD5 /* MockTokenStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

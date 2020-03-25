@@ -25,11 +25,33 @@ class CustomerRepostoryTests: XCTestCase {
         sut = RealCustomerRepository(session: .mockedResponsesOnly, baseURL: "https://test.com", tokenStore: MockTokenStore())
     }
     
-    func test_getAll() throws {
+    func test_getAll_success() throws {
         let data = Customer.mockedData
         try mock(.all, result: .success(data))
         let exp = XCTestExpectation(description: "Completion")
         sut.getAll().sinkToResult { result in
+            result.assertSuccess(value: data)
+            exp.fulfill()
+        }.store(in: &subscriptions)
+        wait(for: [exp], timeout: 2)
+    }
+    
+    func test_getOrders_success() throws {
+        let data = Order.mockedData
+        try mock(.orders(customerId: 1), result: .success(data))
+        let exp = XCTestExpectation(description: "Completion")
+        sut.getOrders(customerId: 1).sinkToResult { result in
+            result.assertSuccess(value: data)
+            exp.fulfill()
+        }.store(in: &subscriptions)
+        wait(for: [exp], timeout: 2)
+    }
+    
+    func test_getBilling_success() throws {
+        let data = Billing.mockedData
+        try mock(.billing(customerId: 1), result: .success(data))
+        let exp = XCTestExpectation(description: "Completion")
+        sut.getBilling(customerId: 1).sinkToResult { result in
             result.assertSuccess(value: data)
             exp.fulfill()
         }.store(in: &subscriptions)
