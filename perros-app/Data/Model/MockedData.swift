@@ -12,7 +12,8 @@ import Foundation
 
 extension Customer {
     static let mockedData: [Customer] = [
-        Customer(id: 1, name: "Foo", address: "Bar")
+        Customer(id: 1, name: "Foo", address: "Bar"),
+        Customer(id: 2, name: "Baz", address: "Tar")
     ]
 }
 
@@ -28,12 +29,37 @@ extension Billing {
     ]
 }
 
+extension BillingReduced {
+    static let mockedData: [BillingReduced] = [
+        BillingReduced(id: 2020, year: "2020", white: "$ 100.00", black: "$ 100.00", credit: "$ 100.00")
+    ]
+}
+
 extension DashboardResponse {
     static let mockedData: DashboardResponse = DashboardResponse(customers: [], orders: [], billing: [])
 }
 
 extension LoginResponse {
     static let mockedData = LoginResponse(token: "666")
+}
+
+extension BillingDashboard {
+    static let mockedData: [BillingDashboard] = [
+        BillingDashboard(year: "2020", total: 100)
+    ]
+}
+
+extension OrdersDashboard {
+    static let mockedData: [OrdersDashboard] = [
+        OrdersDashboard(year: "2020", orders: [OrdersPerMonth(month: 1, count: 10), OrdersPerMonth(month: 2, count: 15)]),
+    ]
+}
+
+extension CustomerDashboard {
+    static let mockedData: [CustomerDashboard] = [
+        CustomerDashboard(id: 1, year: "2020", name: "foo", total: 100),
+        CustomerDashboard(id: 2, year: "2020", name: "foo", total: 100)
+    ]
 }
 
 #endif

@@ -38,6 +38,7 @@ class CustomersViewModel: ObservableObject {
             .store(in: &disposables)
     }
     
+    
     private func sortCustomers(asc: Bool) {
         DispatchQueue.main.async {
             self.all.sort { (a, b) -> Bool in

@@ -15,3 +15,5 @@ struct BillingReduced: Identifiable {
     var black: String
     var credit: String
 }
+
+extension BillingReduced: Equatable {}

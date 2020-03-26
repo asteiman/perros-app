@@ -27,6 +27,11 @@
 		D959070C241F63D8005FBCF1 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959070B241F63D8005FBCF1 /* AsyncImage.swift */; };
 		D96365F52414ED0000F1B209 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96365F42414ED0000F1B209 /* LoginView.swift */; };
 		D96365F72414F60700F1B209 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96365F62414F60700F1B209 /* LoginViewModel.swift */; };
+		D98DB14D242C953D00CCB8F0 /* ImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DB14C242C953D00CCB8F0 /* ImageLoaderTests.swift */; };
+		D98DB14F242C9B4800CCB8F0 /* PriceFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DB14E242C9B4800CCB8F0 /* PriceFormatterTests.swift */; };
+		D98DB151242C9C3F00CCB8F0 /* BillingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DB150242C9C3F00CCB8F0 /* BillingViewModelTests.swift */; };
+		D98DB153242CAB7600CCB8F0 /* CustomersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DB152242CAB7600CCB8F0 /* CustomersViewModelTests.swift */; };
+		D98DB155242CB0F200CCB8F0 /* DashboardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DB154242CB0F200CCB8F0 /* DashboardViewModelTests.swift */; };
 		D99380112414DA410067CB6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99380102414DA410067CB6A /* AppDelegate.swift */; };
 		D99380132414DA410067CB6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99380122414DA410067CB6A /* SceneDelegate.swift */; };
 		D99380152414DA410067CB6A /* CustomersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99380142414DA410067CB6A /* CustomersView.swift */; };
@@ -49,7 +54,6 @@
 		D9B910922420E10600DB8181 /* BillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B910912420E10600DB8181 /* BillingView.swift */; };
 		D9B910942420E78500DB8181 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B910932420E78500DB8181 /* ImageCache.swift */; };
 		D9B910962420EB7F00DB8181 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B910952420EB7F00DB8181 /* OrdersViewModel.swift */; };
-		D9B910982420EBF900DB8181 /* OrderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B910972420EBF900DB8181 /* OrderRepository.swift */; };
 		D9B9109A2420EC5300DB8181 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B910992420EC5300DB8181 /* Order.swift */; };
 		D9EA74EC2428D93900CEB80C /* OrdersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EA74EB2428D93900CEB80C /* OrdersViewModelTests.swift */; };
 		D9EA74F42428DAA700CEB80C /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EA74F32428DAA700CEB80C /* XCTestCase.swift */; };
@@ -100,6 +104,11 @@
 		D959070B241F63D8005FBCF1 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		D96365F42414ED0000F1B209 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D96365F62414F60700F1B209 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D98DB14C242C953D00CCB8F0 /* ImageLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderTests.swift; sourceTree = "<group>"; };
+		D98DB14E242C9B4800CCB8F0 /* PriceFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFormatterTests.swift; sourceTree = "<group>"; };
+		D98DB150242C9C3F00CCB8F0 /* BillingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingViewModelTests.swift; sourceTree = "<group>"; };
+		D98DB152242CAB7600CCB8F0 /* CustomersViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersViewModelTests.swift; sourceTree = "<group>"; };
+		D98DB154242CB0F200CCB8F0 /* DashboardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModelTests.swift; sourceTree = "<group>"; };
 		D993800D2414DA410067CB6A /* perros-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "perros-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D99380102414DA410067CB6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D99380122414DA410067CB6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,7 +133,6 @@
 		D9B910912420E10600DB8181 /* BillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingView.swift; sourceTree = "<group>"; };
 		D9B910932420E78500DB8181 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		D9B910952420EB7F00DB8181 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
-		D9B910972420EBF900DB8181 /* OrderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRepository.swift; sourceTree = "<group>"; };
 		D9B910992420EC5300DB8181 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		D9EA74E92428D93900CEB80C /* perros-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perros-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EA74EB2428D93900CEB80C /* OrdersViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModelTests.swift; sourceTree = "<group>"; };
@@ -179,6 +187,9 @@
 			isa = PBXGroup;
 			children = (
 				D9EA74EB2428D93900CEB80C /* OrdersViewModelTests.swift */,
+				D98DB150242C9C3F00CCB8F0 /* BillingViewModelTests.swift */,
+				D98DB152242CAB7600CCB8F0 /* CustomersViewModelTests.swift */,
+				D98DB154242CB0F200CCB8F0 /* DashboardViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -374,7 +385,6 @@
 			children = (
 				D9B9108E2420E0BD00DB8181 /* OrdersView.swift */,
 				D9B910952420EB7F00DB8181 /* OrdersViewModel.swift */,
-				D9B910972420EBF900DB8181 /* OrderRepository.swift */,
 			);
 			path = Orders;
 			sourceTree = "<group>";
@@ -398,6 +408,8 @@
 				D9EA74F32428DAA700CEB80C /* XCTestCase.swift */,
 				D93DB52E242A4F86003D5AD5 /* MockTokenStore.swift */,
 				D93DB534242A58A7003D5AD5 /* Helpers.swift */,
+				D98DB14C242C953D00CCB8F0 /* ImageLoaderTests.swift */,
+				D98DB14E242C9B4800CCB8F0 /* PriceFormatterTests.swift */,
 			);
 			path = "perros-appTests";
 			sourceTree = "<group>";
@@ -569,7 +581,6 @@
 				D9F843BE241753D2000783E7 /* APICall.swift in Sources */,
 				D99380132414DA410067CB6A /* SceneDelegate.swift in Sources */,
 				D99380312414DBCA0067CB6A /* SearchBarView.swift in Sources */,
-				D9B910982420EBF900DB8181 /* OrderRepository.swift in Sources */,
 				D94388FA24188ED40069596D /* AppState.swift in Sources */,
 				D9B6811E2422440100BBE9FA /* PriceFormatter.swift in Sources */,
 				D99380152414DA410067CB6A /* CustomersView.swift in Sources */,
@@ -606,14 +617,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D98DB14D242C953D00CCB8F0 /* ImageLoaderTests.swift in Sources */,
+				D98DB153242CAB7600CCB8F0 /* CustomersViewModelTests.swift in Sources */,
 				D9EA74F42428DAA700CEB80C /* XCTestCase.swift in Sources */,
 				D93DB535242A58A7003D5AD5 /* Helpers.swift in Sources */,
 				D93DB529242A3BB1003D5AD5 /* MockedResponse.swift in Sources */,
+				D98DB155242CB0F200CCB8F0 /* DashboardViewModelTests.swift in Sources */,
 				D93DB526242A3B63003D5AD5 /* RequestMocking.swift in Sources */,
 				D934511C242B38E0005447A7 /* DashboardRepositoryTests.swift in Sources */,
+				D98DB14F242C9B4800CCB8F0 /* PriceFormatterTests.swift in Sources */,
 				D9EA74EC2428D93900CEB80C /* OrdersViewModelTests.swift in Sources */,
 				D93DB52D242A4ADD003D5AD5 /* CustomerRepositoryTests.swift in Sources */,
 				D934511E242B408A005447A7 /* UserRepositoryTests.swift in Sources */,
+				D98DB151242C9C3F00CCB8F0 /* BillingViewModelTests.swift in Sources */,
 				D93DB52F242A4F86003D5AD5 /* MockTokenStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

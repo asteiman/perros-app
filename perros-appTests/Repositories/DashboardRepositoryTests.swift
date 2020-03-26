@@ -25,12 +25,33 @@ class DashboardRepostoryTests: XCTestCase {
         sut = RealDashboardRepository(session: .mockedResponsesOnly, baseURL: "https://test.com", tokenStore: MockTokenStore())
     }
     
+    override func tearDown() {
+        RequestMocking.removeAllMocks()
+        super.tearDown()
+    }
+    
     func test_get_success() throws {
         let data = DashboardResponse.mockedData
         try mock(.all, result: .success(data))
         let exp = XCTestExpectation(description: "Completion")
         sut.get().sinkToResult { result in
             result.assertSuccess(value: data)
+            exp.fulfill()
+        }.store(in: &subscriptions)
+        wait(for: [exp], timeout: 2)
+    }
+    
+    func test_get_failure() throws {
+        let data = DashboardResponse.mockedData
+        try mock(.all, result: .success(data), httpCode: 500)
+        let exp = XCTestExpectation(description: "Completion")
+        sut.get().sinkToResult { result in
+            switch result {
+            case .failure(let error):
+                XCTAssert(error == GenericError.network)
+            default:
+                XCTFail("Unexpected success")
+            }
             exp.fulfill()
         }.store(in: &subscriptions)
         wait(for: [exp], timeout: 2)
