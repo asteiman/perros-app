@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D922186C242DD910000D912C /* OrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D922186B242DD910000D912C /* OrderTests.swift */; };
+		D922186E242DDADD000D912C /* CustomerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D922186D242DDADD000D912C /* CustomerTests.swift */; };
+		D9221870242DDB6E000D912C /* OrdersDashboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D922186F242DDB6E000D912C /* OrdersDashboardTests.swift */; };
 		D934511C242B38E0005447A7 /* DashboardRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D934511B242B38E0005447A7 /* DashboardRepositoryTests.swift */; };
 		D934511E242B408A005447A7 /* UserRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D934511D242B408A005447A7 /* UserRepositoryTests.swift */; };
 		D93DB526242A3B63003D5AD5 /* RequestMocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93DB525242A3B63003D5AD5 /* RequestMocking.swift */; };
@@ -85,6 +88,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D922186B242DD910000D912C /* OrderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTests.swift; sourceTree = "<group>"; };
+		D922186D242DDADD000D912C /* CustomerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTests.swift; sourceTree = "<group>"; };
+		D922186F242DDB6E000D912C /* OrdersDashboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersDashboardTests.swift; sourceTree = "<group>"; };
 		D934511B242B38E0005447A7 /* DashboardRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRepositoryTests.swift; sourceTree = "<group>"; };
 		D934511D242B408A005447A7 /* UserRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryTests.swift; sourceTree = "<group>"; };
 		D93DB525242A3B63003D5AD5 /* RequestMocking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMocking.swift; sourceTree = "<group>"; };
@@ -174,6 +180,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D922186A242DD8FC000D912C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D922186B242DD910000D912C /* OrderTests.swift */,
+				D922186D242DDADD000D912C /* CustomerTests.swift */,
+				D922186F242DDB6E000D912C /* OrdersDashboardTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D93DB527242A3BA6003D5AD5 /* NetworkMocking */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +417,7 @@
 		D9EA74EA2428D93900CEB80C /* perros-appTests */ = {
 			isa = PBXGroup;
 			children = (
+				D922186A242DD8FC000D912C /* Models */,
 				D93DB52B242A4ACA003D5AD5 /* Repositories */,
 				D93DB52A242A4AC2003D5AD5 /* ViewModels */,
 				D93DB527242A3BA6003D5AD5 /* NetworkMocking */,
@@ -617,12 +634,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D922186C242DD910000D912C /* OrderTests.swift in Sources */,
 				D98DB14D242C953D00CCB8F0 /* ImageLoaderTests.swift in Sources */,
 				D98DB153242CAB7600CCB8F0 /* CustomersViewModelTests.swift in Sources */,
+				D922186E242DDADD000D912C /* CustomerTests.swift in Sources */,
 				D9EA74F42428DAA700CEB80C /* XCTestCase.swift in Sources */,
 				D93DB535242A58A7003D5AD5 /* Helpers.swift in Sources */,
 				D93DB529242A3BB1003D5AD5 /* MockedResponse.swift in Sources */,
 				D98DB155242CB0F200CCB8F0 /* DashboardViewModelTests.swift in Sources */,
+				D9221870242DDB6E000D912C /* OrdersDashboardTests.swift in Sources */,
 				D93DB526242A3B63003D5AD5 /* RequestMocking.swift in Sources */,
 				D934511C242B38E0005447A7 /* DashboardRepositoryTests.swift in Sources */,
 				D98DB14F242C9B4800CCB8F0 /* PriceFormatterTests.swift in Sources */,
