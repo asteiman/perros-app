@@ -486,7 +486,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D99380212414DA430067CB6A /* Build configuration list for PBXNativeTarget "perros-app" */;
 			buildPhases = (
-				D9E03F9124459FAE00D78C19 /* ShellScript */,
+				D9E03F9124459FAE00D78C19 /* Run SwiftFormat */,
 				D99380092414DA410067CB6A /* Sources */,
 				D993800A2414DA410067CB6A /* Frameworks */,
 				D993800B2414DA410067CB6A /* Resources */,
@@ -583,7 +583,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D9E03F9124459FAE00D78C19 /* ShellScript */ = {
+		D9E03F9124459FAE00D78C19 /* Run SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -592,6 +592,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Run SwiftFormat";
 			outputFileListPaths = (
 			);
 			outputPaths = (
