@@ -48,7 +48,7 @@ extension Order.Status {
             return "Draft"
         }
     }
-    
+
     func color() -> Color {
         switch self {
         case .closed:

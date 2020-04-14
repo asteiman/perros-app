@@ -14,7 +14,7 @@ struct UIKitTabView: View {
     var viewControllers: [UIHostingController<AnyView>]
 
     init(_ tabs: [Tab]) {
-        self.viewControllers = tabs.map {
+        viewControllers = tabs.map {
             let host = UIHostingController(rootView: $0.view)
             host.tabBarItem = $0.barItem
             return host
@@ -37,15 +37,12 @@ struct UIKitTabView: View {
     }
 }
 
-
 struct TabBarController: UIViewControllerRepresentable {
-    func updateUIViewController(_ uiViewController: UITabBarController, context: UIViewControllerRepresentableContext<TabBarController>) {
-        
-    }
-    
+    func updateUIViewController(_: UITabBarController, context _: UIViewControllerRepresentableContext<TabBarController>) {}
+
     var controllers: [UIViewController]
 
-    func makeUIViewController(context: Context) -> UITabBarController {
+    func makeUIViewController(context _: Context) -> UITabBarController {
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = controllers
         tabBarController.tabBar.tintColor = .white

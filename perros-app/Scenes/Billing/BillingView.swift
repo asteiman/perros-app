@@ -11,13 +11,12 @@ import SwiftUI
 import SwiftUI
 
 struct BillingView: View {
-    
     @ObservedObject var viewModel: BillingViewModel
-    
+
     init(viewModel: BillingViewModel) {
         self.viewModel = viewModel
     }
-    
+
     var body: some View {
         Group {
             Text("").onAppear { self.viewModel.getBilling() }
@@ -38,9 +37,9 @@ struct BillingView: View {
                                             .padding(6)
                                             .foregroundColor(.white)
                                     }.background(Color.black)
-                                    .opacity(0.8)
-                                    .cornerRadius(10.0)
-                                    .padding(6)
+                                        .opacity(0.8)
+                                        .cornerRadius(10.0)
+                                        .padding(6)
                                     Spacer()
                                     HStack {
                                         Text(String(model.white)).frame(minWidth: 90)

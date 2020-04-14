@@ -6,14 +6,14 @@
 //  Copyright © 2020 Alan Steiman. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 final class MockDashboardRepository: TestWebRepository, DashboardRepository {
     func get() -> AnyPublisher<DashboardResponse, GenericError> {
         let response = DashboardResponse(customers: CustomerDashboard.mockedData, orders: OrdersDashboard.mockedData, billing: BillingDashboard.mockedData)
         return Just(response)
-        .setFailureType(to: GenericError.self)
-        .eraseToAnyPublisher()
+            .setFailureType(to: GenericError.self)
+            .eraseToAnyPublisher()
     }
 }

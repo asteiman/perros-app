@@ -6,11 +6,10 @@
 //  Copyright © 2020 Alan Steiman. All rights reserved.
 //
 
-import XCTest
 @testable import perros_app
+import XCTest
 
 class CustomerTests: XCTestCase {
-    
     func test_statusLabel() {
         let customer = Customer(id: 1, name: "name", address: "name")
         XCTAssertEqual("https://picsum.photos/id/1/100", customer.avatar)

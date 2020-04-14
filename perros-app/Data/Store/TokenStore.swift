@@ -6,13 +6,13 @@
 //  Copyright © 2020 Alan Steiman. All rights reserved.
 //
 
+import Combine
 import Foundation
 import KeychainAccess
-import Combine
 
 protocol TokenStorage {
     var token: String? { get }
-    
+
     func setToken(token: String)
     func revoke()
 }
@@ -23,18 +23,18 @@ final class TokenStore: TokenStorage, ObservableObject {
     private(set) var token: String?
 
     private let keychain = Keychain(service: "com.perros")
-    
+
     func load() {
         token = keychain["token"]
         tokenSubject.send(())
     }
-    
+
     func setToken(token: String) {
         self.token = token
         keychain["token"] = token
         tokenSubject.send(())
     }
-    
+
     func revoke() {
         token = nil
         keychain["token"] = nil

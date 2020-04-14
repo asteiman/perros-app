@@ -20,6 +20,4 @@ extension Customer {
     }
 }
 
-extension Customer: Equatable {
-    
-}
+extension Customer: Equatable {}

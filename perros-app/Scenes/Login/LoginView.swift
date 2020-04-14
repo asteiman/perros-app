@@ -9,13 +9,12 @@
 import SwiftUI
 
 struct LoginView: View {
-
     @ObservedObject private var viewModel: LoginViewModel
-    
+
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
     }
-    
+
     var body: some View {
         VStack {
             Text("Admin PER-ROS").font(.title).padding()
@@ -27,7 +26,6 @@ struct LoginView: View {
             .frame(width: nil, height: 60)
             .background(ColorKit.lightGreyColor)
             .cornerRadius(5)
-            
 
             if viewModel.isError {
                 Text("Invalid credentials, please try again").padding(.bottom, 10).foregroundColor(.red)
@@ -36,12 +34,12 @@ struct LoginView: View {
                 self.viewModel.login()
             }) {
                 Text(viewModel.isLoading ? "Loading ..." : "Login")
-                .frame(width: 200, height: 20)
-                .padding()
+                    .frame(width: 200, height: 20)
+                    .padding()
                     .background(viewModel.isValid ? Color.green : ColorKit.lightGreyColor)
-                .foregroundColor(.white)
-                .cornerRadius(4)
-                .padding(.top, 10)
+                    .foregroundColor(.white)
+                    .cornerRadius(4)
+                    .padding(.top, 10)
             }
             .disabled(!viewModel.isValid)
         }.frame(width: 350, height: nil, alignment: .center).keyboardResponsive()

@@ -12,7 +12,7 @@ import SwiftUI
 struct AsyncImage<Placeholder: View>: View {
     @ObservedObject private var loader: ImageLoader
     private let placeholder: Placeholder?
-    
+
     init(url: URL, placeholder: Placeholder? = nil, cache: ImageCache? = nil) {
         loader = ImageLoader(url: url, cache: cache)
         self.placeholder = placeholder
@@ -23,7 +23,7 @@ struct AsyncImage<Placeholder: View>: View {
             .onAppear(perform: loader.load)
             .onDisappear(perform: loader.cancel)
     }
-    
+
     private var image: some View {
         Group {
             if loader.image != nil {

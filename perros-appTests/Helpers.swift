@@ -6,8 +6,8 @@
 //  Copyright © 2020 Alan Steiman. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 import XCTest
 
 extension Result where Success: Equatable {

@@ -9,13 +9,12 @@
 import SwiftUI
 
 struct AccountView: View {
-    
     private let repository: UserRepository
-    
+
     init(repository: UserRepository) {
         self.repository = repository
     }
-    
+
     var body: some View {
         NavigationView {
             Button(action: {
@@ -27,7 +26,7 @@ struct AccountView: View {
             .background(NavigationConfigurator { nc in
                 nc.navigationBar.barTintColor = ColorKit.danube
                 let titleDict: NSDictionary = [NSAttributedString.Key.foregroundColor: UIColor.white]
-                nc.navigationBar.titleTextAttributes = titleDict as? [NSAttributedString.Key : Any]
+                nc.navigationBar.titleTextAttributes = titleDict as? [NSAttributedString.Key: Any]
             })
         }
     }

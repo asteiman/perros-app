@@ -6,11 +6,10 @@
 //  Copyright © 2020 Alan Steiman. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 class LoginViewModel: ObservableObject {
-    
     private let repository: UserRepository
     private var disposables = Set<AnyCancellable>()
     @Published var isLoading: Bool = false
@@ -21,28 +20,29 @@ class LoginViewModel: ObservableObject {
             validate()
         }
     }
+
     @Published var password: String = "" {
         didSet {
             validate()
         }
     }
-    
+
     init(repository: UserRepository) {
         self.repository = repository
     }
-    
+
     private func validate() {
         isError = false
         isValid = !username.isEmpty && !password.isEmpty
     }
-    
+
     func login() {
         isLoading = true
         repository.login(username: username, password: password).sink(receiveCompletion: { completion in
-            if case .failure(_) = completion {
+            if case .failure = completion {
                 self.isError = true
             }
-        }) { response in
+        }) { _ in
             // Nothing here
         }.store(in: &disposables)
     }

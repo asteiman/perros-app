@@ -9,25 +9,24 @@
 import SwiftUI
 
 struct SearchBarView: View {
-    
     @Binding var searchText: String
     @Binding var sortAsc: Bool
     @State private var showCancelButton: Bool = false
-    var onCommit: () ->Void = {print("onCommit")}
-    
+    var onCommit: () -> Void = { print("onCommit") }
+
     var body: some View {
         VStack {
             Spacer().frame(width: 1, height: 10)
             HStack {
                 HStack {
                     Image(systemName: "magnifyingglass")
-                    
+
                     // Search text field
-                    ZStack (alignment: .leading) {
+                    ZStack(alignment: .leading) {
                         if searchText.isEmpty { // Separate text for placeholder to give it the proper color
                             Text("Search")
                         }
-                        TextField("", text: $searchText, onEditingChanged: { isEditing in
+                        TextField("", text: $searchText, onEditingChanged: { _ in
                             self.showCancelButton = true
                         }, onCommit: onCommit).foregroundColor(.primary)
                     }
@@ -42,8 +41,8 @@ struct SearchBarView: View {
                 .foregroundColor(.secondary) // For magnifying glass and placeholder test
                 .background(Color(.tertiarySystemFill))
                 .cornerRadius(10.0)
-                
-                if showCancelButton  {
+
+                if showCancelButton {
                     // Cancel button
                     Button("Cancel") {
                         UIApplication.shared.endEditing(true) // this must be placed before the other commands here

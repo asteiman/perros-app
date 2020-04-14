@@ -19,25 +19,25 @@ struct RealUserRepository: UserRepository {
     let baseURL: String
     let bgQueue = DispatchQueue(label: "bg_parse_queue")
     let tokenStore: TokenStorage
-    
+
     init(session: URLSession, baseURL: String, tokenStore: TokenStorage) {
         self.session = session
         self.baseURL = baseURL
         self.tokenStore = tokenStore
     }
-    
+
     func login(username: String, password: String) -> AnyPublisher<Void, Error> {
         let response: AnyPublisher<LoginResponse, APIError> = call(endpoint: API.login(username: username, password: password))
-        
+
         return response.map { response in
             self.tokenStore.setToken(token: response.token)
         }
-        .mapError { error in
-            return GenericError.network
+        .mapError { _ in
+            GenericError.network
         }
         .eraseToAnyPublisher()
     }
-    
+
     func logout() {
         tokenStore.revoke()
     }
@@ -55,36 +55,36 @@ extension RealUserRepository.API: APICall {
     var needsToken: Bool {
         false
     }
-    
+
     var path: String {
         switch self {
         case .login(username: _, password: _):
             return "/login"
         }
     }
-    
+
     var method: String {
         switch self {
         case .login(username: _, password: _):
             return "POST"
         }
     }
-    
+
     var headers: [String: String]? {
         var headers = ["Accept": "application/json"]
-        
+
         switch self {
-        case .login(let username, let password):
-            
+        case let .login(username, password):
+
             let loginString = String(format: "%@:%@", username, password)
             let loginData = loginString.data(using: String.Encoding.utf8)!
             let base64LoginString = loginData.base64EncodedString()
             headers["Authorization"] = "Basic \(base64LoginString)"
         }
-        
+
         return headers
     }
-    
+
     func body() throws -> Data? {
         return nil
     }
@@ -92,7 +92,7 @@ extension RealUserRepository.API: APICall {
 
 struct LoginResponse: Codable {
     let token: String
-    
+
     enum CodingKeys: String, CodingKey {
         case token = "string"
     }

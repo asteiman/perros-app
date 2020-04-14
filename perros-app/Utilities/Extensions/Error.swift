@@ -11,7 +11,7 @@ import Foundation
 extension Error {
     var underlyingError: Error? {
         let nsError = self as NSError
-        if nsError.domain == NSURLErrorDomain && nsError.code == -1009 {
+        if nsError.domain == NSURLErrorDomain, nsError.code == -1009 {
             // "The Internet connection appears to be offline."
             return self
         }

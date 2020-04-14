@@ -11,8 +11,7 @@ import Foundation
 class PriceFormatter {
     static func format(rawPrice: Double?) -> String {
         let unrwappedPrice = rawPrice ?? 0
-        
+
         return String(format: "$ %.2f", unrwappedPrice)
     }
 }
-

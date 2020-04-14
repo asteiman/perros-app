@@ -6,32 +6,32 @@
 //  Copyright © 2020 Alan Steiman. All rights reserved.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 struct DashboardView: View {
     @ObservedObject var viewModel: DashboardViewModel
     @State private var selectedYear = 0
     private let cornerRadius: CGFloat = 5
-    
+
     init(viewModel: DashboardViewModel) {
         self.viewModel = viewModel
     }
-    
+
     var body: some View {
         NavigationView {
             GeometryReader { geo in
                 ScrollView {
                     Picker("", selection: self.$selectedYear) {
-                        ForEach(0..<self.viewModel.years.count, id: \.self) {
+                        ForEach(0 ..< self.viewModel.years.count, id: \.self) {
                             Text(self.viewModel.years[$0]).tag($0)
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     .padding()
-                    
+
                     Text("Closed orders").font(.title)
-                    
+
                     self.graph()
 
                     HStack {
@@ -44,18 +44,18 @@ struct DashboardView: View {
             }.navigationBarTitle("Dashboard", displayMode: .inline)
                 .onAppear {
                     self.viewModel.getOrders()
-            }.background(NavigationConfigurator { nc in
-                nc.navigationBar.barTintColor = ColorKit.danube
-                let titleDict: NSDictionary = [NSAttributedString.Key.foregroundColor: UIColor.white]
-                nc.navigationBar.titleTextAttributes = titleDict as? [NSAttributedString.Key : Any]
+                }.background(NavigationConfigurator { nc in
+                    nc.navigationBar.barTintColor = ColorKit.danube
+                    let titleDict: NSDictionary = [NSAttributedString.Key.foregroundColor: UIColor.white]
+                    nc.navigationBar.titleTextAttributes = titleDict as? [NSAttributedString.Key: Any]
             })
         }
     }
-    
+
     func topBilled() -> some View {
         return ZStack {
             Color.white.shadow(color: .gray, radius: 3, x: 0, y: 0)
-            
+
             VStack {
                 Text("Top Billed Customers").font(.title).padding(.bottom, 20).padding(.top, 10)
                 ForEach(self.viewModel.getTopBilledCustomers(selectedYear: self.selectedYear)) { customer in
@@ -71,7 +71,7 @@ struct DashboardView: View {
             }
         }.padding()
     }
-    
+
     func squareView(using proxy: GeometryProxy, title: String, number: String) -> some View {
         let margin: CGFloat = 36
         let width = proxy.size.width / 2
@@ -88,12 +88,12 @@ struct DashboardView: View {
         }.cornerRadius(cornerRadius).frame(width: side, height: side).padding(16)
             .shadow(color: .gray, radius: 3, x: 0, y: 0)
     }
-    
+
     func graph() -> some View {
         return ZStack {
             ColorKit.lightGreyColor.frame(width: nil, height: 220)
             HStack {
-                ForEach(1..<13) { month in
+                ForEach(1 ..< 13) { month in
                     VStack {
                         Spacer()
                         Text(self.viewModel.getOrderLabel(selectedYear: self.selectedYear, month: month))
@@ -101,7 +101,7 @@ struct DashboardView: View {
                             .rotationEffect(.degrees(-90))
                             .offset(y: 0)
                             .zIndex(1)
-                        
+
                         Rectangle()
                             .fill(Color.green)
                             .frame(width: 20, height: CGFloat(integerLiteral: self.viewModel.getOrderCount(selectedYear: self.selectedYear, month: month)))

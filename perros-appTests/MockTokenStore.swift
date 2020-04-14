@@ -11,14 +11,14 @@ import Foundation
 
 final class MockTokenStore: TokenStorage {
     var token: String? = {
-        return "foo"
+        "foo"
     }()
-    
+
     func setToken(token: String) {
         self.token = token
     }
-    
+
     func revoke() {
-        self.token = nil
+        token = nil
     }
 }

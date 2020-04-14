@@ -11,7 +11,7 @@ import SwiftUI
 struct RootView: View {
     @EnvironmentObject var appState: AppState
     @State private var selected = 0
-    
+
     var body: some View {
         VStack {
             if appState.isLoggedIn {
@@ -21,7 +21,7 @@ struct RootView: View {
             }
         }
     }
-    
+
     var tabView: some View {
         UIKitTabView([
             UIKitTabView.Tab(
@@ -35,10 +35,10 @@ struct RootView: View {
             UIKitTabView.Tab(
                 view: AccountView(repository: RealUserRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: appState.getTokenStorage())),
                 barItem: UITabBarItem(title: "Account", image: UIImage(systemName: "person.circle"), selectedImage: UIImage(systemName: "person.circle.fill"))
-            )
+            ),
         ])
     }
-    
+
     var loginView: some View {
         LoginView(viewModel: LoginViewModel(repository: RealUserRepository(session: .shared, baseURL: Config.baseUrl, tokenStore: appState.getTokenStorage())))
     }

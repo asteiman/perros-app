@@ -17,37 +17,36 @@ protocol CustomerRepository: WebRepository {
 }
 
 struct RealCustomerRepository: CustomerRepository {
-    
     let session: URLSession
     let baseURL: String
     let bgQueue = DispatchQueue(label: "bg_parse_queue")
     let tokenStore: TokenStorage
-        
+
     init(session: URLSession, baseURL: String, tokenStore: TokenStorage) {
         self.session = session
         self.baseURL = baseURL
         self.tokenStore = tokenStore
     }
-    
+
     func getAll() -> AnyPublisher<[Customer], GenericError> {
         return call(endpoint: API.all)
-            .mapError { error in
-            return GenericError.network
-        }.eraseToAnyPublisher()
+            .mapError { _ in
+                GenericError.network
+            }.eraseToAnyPublisher()
     }
-    
+
     func getOrders(customerId: Customer.ID) -> AnyPublisher<[Order], GenericError> {
         return call(endpoint: API.orders(customerId: customerId))
-            .mapError { error in
-            return GenericError.network
-        }.eraseToAnyPublisher()
+            .mapError { _ in
+                GenericError.network
+            }.eraseToAnyPublisher()
     }
-    
+
     func getBilling(customerId: Customer.ID) -> AnyPublisher<[Billing], GenericError> {
         return call(endpoint: API.billing(customerId: customerId))
-            .mapError { error in
-            return GenericError.network
-        }.eraseToAnyPublisher()
+            .mapError { _ in
+                GenericError.network
+            }.eraseToAnyPublisher()
     }
 }
 
@@ -65,28 +64,28 @@ extension RealCustomerRepository.API: APICall {
     var needsToken: Bool {
         true
     }
-    
+
     var path: String {
         switch self {
         case .all:
             return "/customers"
-        case .orders(let customerId):
+        case let .orders(customerId):
             return "/customers/\(customerId)/invoices"
-        case .billing(let customerId):
+        case let .billing(customerId):
             return "/customers/\(customerId)/billings"
         }
     }
-    
+
     var method: String {
         return "GET"
     }
-    
+
     var headers: [String: String]? {
         let headers = ["Accept": "application/json"]
-        
+
         return headers
     }
-    
+
     func body() throws -> Data? {
         return nil
     }

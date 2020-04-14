@@ -29,7 +29,7 @@ struct CustomerDashboard: Codable, Identifiable, Equatable {
 struct OrdersDashboard: Codable, Equatable {
     let year: String
     let orders: [OrdersPerMonth]
-    
+
     struct OrdersPerMonth: Codable, Equatable {
         let month: Int
         let count: Int

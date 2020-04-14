@@ -15,18 +15,18 @@ struct CustomerDetailView: View {
     @State private var selectedTab = 0
     private let ordersViewModel: OrdersViewModel
     private let billingViewModel: BillingViewModel
-    
+
     init(customer: Customer, ordersViewModel: OrdersViewModel, billingViewModel: BillingViewModel) {
         self.customer = customer
         self.ordersViewModel = ordersViewModel
         self.billingViewModel = billingViewModel
     }
-    
+
     var body: some View {
         VStack {
             HStack(alignment: .top) {
                 AsyncImage(url: URL(string: customer.avatar)!, placeholder: Image("default-avatar").resizable(), cache: appState.cache).frame(width: 100, height: 100).aspectRatio(contentMode: .fit).cornerRadius(100)
-                
+
                 VStack(alignment: .leading) {
                     Spacer().frame(height: 10)
                     Text(customer.name).font(.title)

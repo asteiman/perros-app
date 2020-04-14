@@ -6,14 +6,13 @@
 //  Copyright © 2020 Alan Steiman. All rights reserved.
 //
 
-import XCTest
 import Combine
 @testable import perros_app
+import XCTest
 
 class ImageLoaderTests: XCTestCase {
-    
     var subscriptions = Set<AnyCancellable>()
-    
+
     func testImageLoader_success() {
         let sut = ImageLoader(url: URL(string: "https://picsum.photos/20")!, cache: nil, session: .shared)
         sut.load()
@@ -23,10 +22,10 @@ class ImageLoaderTests: XCTestCase {
             XCTAssertNotNil(image)
             exp.fulfill()
         }.store(in: &subscriptions)
-        
+
         wait(for: [exp], timeout: 5)
     }
-    
+
     func testImageLoader_failure() {
         let sut = ImageLoader(url: URL(string: "https://www.google.com")!, cache: nil, session: .shared)
         sut.load()
@@ -36,10 +35,10 @@ class ImageLoaderTests: XCTestCase {
             XCTAssertNil(image)
             exp.fulfill()
         }.store(in: &subscriptions)
-        
+
         wait(for: [exp], timeout: 5)
     }
-    
+
     func testImageLoader_startWithEmpty() {
         let sut = ImageLoader(url: URL(string: "https://www.google.com")!, cache: nil, session: .shared)
         sut.load()
@@ -49,7 +48,7 @@ class ImageLoaderTests: XCTestCase {
             XCTAssertNil(image)
             exp.fulfill()
         }.store(in: &subscriptions)
-        
+
         wait(for: [exp], timeout: 5)
     }
 }

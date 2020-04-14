@@ -9,13 +9,12 @@
 import SwiftUI
 
 struct OrdersView: View {
-    
     @ObservedObject var viewModel: OrdersViewModel
-    
+
     init(viewModel: OrdersViewModel) {
         self.viewModel = viewModel
     }
-    
+
     var body: some View {
         Group {
             Text("").onAppear { self.viewModel.getOrders() }
@@ -36,9 +35,9 @@ struct OrdersView: View {
                                             .padding(6)
                                             .foregroundColor(.white)
                                     }.background(Color.black)
-                                    .opacity(0.8)
-                                    .cornerRadius(10.0)
-                                    .padding(6)
+                                        .opacity(0.8)
+                                        .cornerRadius(10.0)
+                                        .padding(6)
                                     Spacer()
                                     Text(model.formattedDate)
                                 }

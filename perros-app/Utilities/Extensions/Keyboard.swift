@@ -10,7 +10,7 @@ import SwiftUI
 
 struct KeyboardResponsiveModifier: ViewModifier {
     @State private var offset: CGFloat = 0
-    
+
     func body(content: Content) -> some View {
         content
             .padding(.bottom, offset)
@@ -21,11 +21,11 @@ struct KeyboardResponsiveModifier: ViewModifier {
                     let bottomInset = UIApplication.shared.windows.first?.safeAreaInsets.bottom
                     self.offset = height - (bottomInset ?? 0)
                 }
-                
-                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { notif in
+
+                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
                     self.offset = 0
                 }
-        }
+            }
     }
 }
 
